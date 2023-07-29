@@ -60,12 +60,18 @@
                     size = document.globals.pizza.scale.x * 10;
                     document.getElementById("size").innerText = `${
                         Math.round(size * 100) / 100
-                    } in`;
+                    }" diameter`;
+
+                    document.getElementById("thickness").innerText = `${
+                        Math.round(
+                            document.globals.pizza.scale.y * 100 * 0.75
+                        ) / 100
+                    }" thick`;
 
                     document.globals.banana.position.x =
-                        document.globals.pizza.scale.x * 7;
+                        document.globals.pizza.scale.x * 6;
                     document.globals.gun.position.x =
-                        document.globals.pizza.scale.x * 7;
+                        document.globals.pizza.scale.x * 6;
 
                     document.globals.camera.position.z += change_x_per_ms * 7;
                     document.globals.camera.position.y +=
@@ -145,14 +151,16 @@
             </div>
         </div>
 
-        <p id="size">10 in</p>
+        <p id="size">10" diameter</p>
+        <p id="thickness">.75" thick</p>
 
         <script type="importmap">
             {
                 "imports": {
                     "three": "./three.js-master/build/three.module.js",
                     "three/examples/jsm/loaders/OBJLoader": "./three.js-master/examples/jsm/loaders/OBJLoader.js",
-                    "three/examples/jsm/loaders/FBXLoader": "./three.js-master/examples/jsm/loaders/FBXLoader.js"
+                    "three/examples/jsm/loaders/FBXLoader": "./three.js-master/examples/jsm/loaders/FBXLoader.js",
+                    "three/examples/jsm/controls/OrbitControls.js": "./three.js-master/examples/jsm/controls/OrbitControls.js"
                 }
             }
         </script>
@@ -161,6 +169,7 @@
             import * as THREE from "./three.js-master/build/three.module.js";
             import { OBJLoader } from "./three.js-master/examples/jsm/loaders/OBJLoader.js";
             import { FBXLoader } from "./three.js-master/examples/jsm/loaders/FBXLoader.js";
+            import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
             // globals
             let pizza;
@@ -176,7 +185,7 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 const aspect = 2; // the canvas default
                 const near = 0.01;
-                const far = 1000;
+                const far = 10000;
                 const camera = new THREE.PerspectiveCamera(
                     fov,
                     aspect,
@@ -331,19 +340,28 @@
                 scene.add(plane);
 
                 // plane.rotation.x = 1
+                const controls = new OrbitControls(camera, renderer.domElement);
 
                 // spin and render
                 function render(time) {
                     time *= 0.001; // convert time to seconds
+
+                    controls.update();
 
                     if (pizza) {
                         pizza.rotation.y = time;
                         // pizza.scale.y= 1
 
                         plane.rotation.x = -1.5;
-                        plane.position.y = -2;
+                        plane.position.y = -0.5;
                         pizza.rotation.x = 0.0715;
+                        if (banana) {
+                            banana.position.y = -0.5;
+                        }
 
+                        if (document.globals.gun) {
+                            document.globals.gun.position.y = -0.5;
+                        }
                         document.globals["pizza"] = pizza;
                         document.globals["banana"] = banana;
                         document.globals["canvas"] = canvas;
