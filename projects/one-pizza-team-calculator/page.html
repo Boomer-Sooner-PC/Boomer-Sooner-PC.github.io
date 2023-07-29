@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>One Pizza Team Calculators</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                border: 0px;
+                background-color: #000000;
+            }
+            canvas {
+                display: block;
+            }
+        </style>
+
+        <script>
+            document.globals = {
+                pizza: null,
+                banana: null,
+                canvas: null,
+                renderer: null,
+                camera: null,
+                scene: null,
+                gun: null,
+            };
+
+            function scale(width, height) {
+                document.globals.pizza.scale.x = width;
+                document.globals.pizza.scale.z = width;
+                document.globals.pizza.scale.y = height;
+
+                document.globals.pizza.position.y = height / 2 - 0.5;
+
+                max = width > height ? width : height;
+
+                // move camera back to fit the pizza
+                document.globals.camera.position.z = max * 15;
+                document.globals.camera.position.y = max * 7;
+
+                return true;
+            }
+
+            async function scale_over_time(width, height, miliseconds) {
+                current_x = document.globals.pizza.scale.x;
+                current_y = document.globals.pizza.scale.y;
+
+                change_x_per_ms = (width - current_x) / miliseconds;
+                change_y_per_ms = (height - current_y) / miliseconds;
+
+                // slowly animate it
+                for (let i = 0; i < miliseconds; i++) {
+                    document.globals.pizza.scale.x += change_x_per_ms;
+                    document.globals.pizza.scale.z += change_x_per_ms;
+                    document.globals.pizza.scale.y += change_y_per_ms;
+
+                    size = document.globals.pizza.scale.x * 10;
+                    document.getElementById("size").innerText = `${
+                        Math.round(size * 100) / 100
+                    } in`;
+
+                    document.globals.banana.position.x =
+                        document.globals.pizza.scale.x * 7;
+                    document.globals.gun.position.x =
+                        document.globals.pizza.scale.x * 7;
+
+                    document.globals.camera.position.z += change_x_per_ms * 7;
+                    document.globals.camera.position.y +=
+                        change_y_per_ms * 4 + change_x_per_ms * 2;
+
+                    document.globals.pizza.position.y =
+                        document.globals.pizza.scale.y / 2 - 0.5;
+                    if (i % 10 == 0) {
+                        await new Promise((r) => setTimeout(r, 1));
+                    }
+                }
+            }
+
+            function setScale(item) {
+                if (item == "gun") {
+                    document.globals.scene.remove(document.globals.banana);
+                    document.globals.scene.add(document.globals.gun);
+                } else {
+                    document.globals.scene.remove(document.globals.gun);
+                    document.globals.scene.add(document.globals.banana);
+                }
+            }
+        </script>
+
+        <script>
+            function reactive() {
+                ratio = window.innerWidth / window.innerHeight;
+                if (ratio < 1) {
+                    document.body.innerHTML = "";
+                    document.body.innerHTML =
+                        "<h1>Sorry this content is only avaliable on desktop</h1>";
+                    document.body.style.backgroundColor = "#ffffff";
+                }
+            }
+
+            function update() {
+                number_of_people =
+                    document.getElementById("people-input").value;
+
+                pizza_scale = Math.sqrt(
+                    (number_of_people * (Math.pow(1, 2) * 3.14)) / 3.14
+                );
+
+                scale_over_time(pizza_scale, pizza_scale / 1, 1000);
+            }
+
+            function update_scale() {
+                value = document.getElementById("gun-check").checked;
+                if (value) {
+                    setScale("gun");
+                } else {
+                    setScale("banana");
+                }
+            }
+        </script>
+
+        <link rel="stylesheet" href="page.css" />
+    </head>
+    <body>
+        <canvas id="c"></canvas>
+
+        <div id="control-box">
+            <img src="./title.gif" alt="" />
+            <div id="controls">
+                <div id="number-people-container">
+                    <input type="number" name="people" id="people-input" />
+                    <label for="people-input">number of people</label>
+                </div>
+                <div id="submit-container">
+                    <button onclick="update()" id="submit"></button>
+                    <label for="submit">submit</label>
+                </div>
+                <div id="scale-container" onclick="update_scale()">
+                    <input type="checkbox" name="gun" id="gun-check" />
+                    <label for="gun-check">gun scale</label>
+                </div>
+            </div>
+        </div>
+
+        <p id="size">10 in</p>
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "./three.js-master/build/three.module.js",
+                    "three/examples/jsm/loaders/OBJLoader": "./three.js-master/examples/jsm/loaders/OBJLoader.js",
+                    "three/examples/jsm/loaders/FBXLoader": "./three.js-master/examples/jsm/loaders/FBXLoader.js"
+                }
+            }
+        </script>
+
+        <script type="module">
+            import * as THREE from "./three.js-master/build/three.module.js";
+            import { OBJLoader } from "./three.js-master/examples/jsm/loaders/OBJLoader.js";
+            import { FBXLoader } from "./three.js-master/examples/jsm/loaders/FBXLoader.js";
+
+            // globals
+            let pizza;
+            let canvas;
+            let renderer;
+            let banana;
+
+            function main() {
+                canvas = document.querySelector("#c");
+                renderer = new THREE.WebGLRenderer({ canvas });
+
+                const fov = 75;
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                const aspect = 2; // the canvas default
+                const near = 0.01;
+                const far = 1000;
+                const camera = new THREE.PerspectiveCamera(
+                    fov,
+                    aspect,
+                    near,
+                    far
+                );
+                camera.position.z = 12;
+                camera.position.y = 8;
+                camera.rotation.x = -0.5;
+
+                const scene = new THREE.Scene();
+
+                document.globals.scene = scene;
+
+                // Step 1: Load the pizza OBJ model
+                const objLoader = new OBJLoader();
+                const objUrl = "3dFiles/pizza.obj";
+                objLoader.load(objUrl, (obj) => {
+                    // Adjust the position, scale, or rotation of the obj if needed
+                    // obj.position.set(0, 0, 0);
+
+                    // Step 2: Load the JPG texture
+                    const textureLoader = new THREE.TextureLoader();
+                    const textureUrl = "3dFiles/pizza.png";
+                    textureLoader.load(textureUrl, (texture) => {
+                        // Step 3: Create a material using the texture
+                        const material = new THREE.MeshPhongMaterial({
+                            map: texture,
+                        });
+
+                        // If you prefer basic material, you can use MeshBasicMaterial instead
+                        // const material = new THREE.MeshBasicMaterial({ map: texture });
+
+                        // Step 4: Apply the material to the OBJ model
+                        obj.traverse((child) => {
+                            if (child instanceof THREE.Mesh) {
+                                child.material = material;
+                            }
+                        });
+
+                        // Finally, add the obj to the scene
+                        scene.add(obj);
+                        pizza = obj;
+                    });
+                });
+
+                // same thing to load the banana model for scale
+                const objLoader2 = new OBJLoader();
+                const objUrl2 = "3dFiles/banana.obj";
+                objLoader2.load(objUrl2, (obj) => {
+                    // Adjust the position, scale, or rotation of the obj if needed
+                    // obj.position.set(0, 0, 0);
+
+                    // Step 2: Load the JPG texture
+                    const textureLoader = new THREE.TextureLoader();
+                    const textureUrl = "3dFiles/banana.jpg";
+                    textureLoader.load(textureUrl, (texture) => {
+                        // Step 3: Create a material using the texture
+                        const material = new THREE.MeshPhongMaterial({
+                            map: texture,
+                        });
+
+                        // If you prefer basic material, you can use MeshBasicMaterial instead
+                        // const material = new THREE.MeshBasicMaterial({ map: texture });
+
+                        // Step 4: Apply the material to the OBJ model
+                        obj.traverse((child) => {
+                            if (child instanceof THREE.Mesh) {
+                                child.material = material;
+                            }
+                        });
+
+                        obj.scale.x = 25;
+                        obj.scale.y = 25;
+                        obj.scale.z = 25;
+
+                        obj.rotation.y = -1.8;
+                        // obj.rotation.z = 0.5
+
+                        obj.position.x = 10;
+
+                        // Finally, add the obj to the scene
+                        scene.add(obj);
+                        banana = obj;
+                    });
+                });
+
+                // load gun FBX and gun texture
+                const fbxLoader = new FBXLoader();
+                const fbxUrl = "3dFiles/gun.fbx";
+                fbxLoader.load(fbxUrl, (fbx) => {
+                    // Adjust the position, scale, or rotation of the obj if needed
+                    // obj.position.set(0, 0, 0);
+
+                    // Step 2: Load the JPG texture
+                    const textureLoader = new THREE.TextureLoader();
+                    const textureUrl = "3dFiles/gun.png";
+                    textureLoader.load(textureUrl, (texture) => {
+                        // Step 3: Create a material using the texture
+                        const material = new THREE.MeshPhongMaterial({
+                            map: texture,
+                        });
+
+                        // If you prefer basic material, you can use MeshBasicMaterial instead
+                        // const material = new THREE.MeshBasicMaterial({ map: texture });
+
+                        // Step 4: Apply the material to the OBJ model
+                        fbx.traverse((child) => {
+                            if (child instanceof THREE.Mesh) {
+                                child.material = material;
+                            }
+                        });
+
+                        fbx.scale.x = 0.18;
+                        fbx.scale.y = 0.18;
+                        fbx.scale.z = 0.18;
+
+                        fbx.rotation.y = 1.5;
+
+                        fbx.position.x = 8;
+
+                        // Finally, add the obj to the scene
+                        // scene.add(fbx);
+                        document.globals.gun = fbx;
+                    });
+                });
+
+                // add light
+                const color = 0xffffff;
+                const intensity = 1;
+                const light = new THREE.DirectionalLight(color, intensity);
+                light.position.set(-1, 2, 4);
+                scene.add(light);
+
+                // add ambient light
+                const ambientLight = new THREE.AmbientLight(0x404040, 10); // soft white light
+                scene.add(ambientLight);
+                //
+
+                // make a plane with the texture checker.jpg repeating on it using a flat cube not a plane
+                const loader = new THREE.TextureLoader();
+                const texture = loader.load("3dFiles/checker.jpg");
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                texture.magFilter = THREE.NearestFilter;
+                const repeats = 10;
+                texture.repeat.set(repeats, repeats);
+
+                const geometry = new THREE.BoxGeometry(1000, 1000, 0.01);
+                const material = new THREE.MeshBasicMaterial({ map: texture });
+                const plane = new THREE.Mesh(geometry, material);
+                scene.add(plane);
+
+                // plane.rotation.x = 1
+
+                // spin and render
+                function render(time) {
+                    time *= 0.001; // convert time to seconds
+
+                    if (pizza) {
+                        pizza.rotation.y = time;
+                        // pizza.scale.y= 1
+
+                        plane.rotation.x = -1.5;
+                        plane.position.y = -2;
+                        pizza.rotation.x = 0.0715;
+
+                        document.globals["pizza"] = pizza;
+                        document.globals["banana"] = banana;
+                        document.globals["canvas"] = canvas;
+                        document.globals["renderer"] = renderer;
+                        document.globals["camera"] = camera;
+
+                        reactive();
+                    }
+
+                    renderer.render(scene, camera);
+
+                    requestAnimationFrame(render);
+                }
+
+                requestAnimationFrame(render);
+            }
+
+            main();
+        </script>
+    </body>
+</html>
