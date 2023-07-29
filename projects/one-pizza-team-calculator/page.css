@@ -99,3 +99,12 @@
     font-family: monospace;
     color: black;
 }
+
+#thickness {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    font-size: 500%;
+    font-family: monospace;
+    color: black;
+}
