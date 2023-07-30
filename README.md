@@ -4,17 +4,16 @@
 
 ## About
 
-This is my personal website designed to be hosted on GitHub pages. It is built using Gatsby so I can learn React. It also hosts some projects I have that are not built using Gatsby, but are still moved to the build directory.
+This is my personal website designed to be hosted on GitHub pages. It is built using React.
 
 ## How to set up
 
 -   have node.js installed
 -   have python installed
--   have gatsby.js installed
 
 1. cd into the /src folder and run `npm install -i`
-2. cd back into the parent directory
-3. run `compile.py`
+2. cd back into the main directory
+3. then run `python compile.py`
 
 ## Deployment
 
