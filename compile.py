@@ -26,7 +26,7 @@ def compile():
 
 def deploy(message):
     print("Deploying the build folder to gh-pages...")
-    # deploy the build folder to gh-pages
+    # deploy the build folder to gh-pages (gh-pages branch) already created
     subprocess.call(
         'git subtree push --prefix build origin gh-pages', shell=True)
     print('Build folder deployed successfully!')
@@ -41,6 +41,6 @@ def deploy(message):
 
 
 if __name__ == '__main__':
-    compile()
+    # compile()
     if input("Would you like to deply? (y/n): ").lower() == "y":
         deploy(input("Enter the commit message: "))
