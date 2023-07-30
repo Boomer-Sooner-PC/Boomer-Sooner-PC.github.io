@@ -1,0 +1,110 @@
+#control-box {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 5%;
+    left: 0;
+    background-color: #676767b0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#control-box > img {
+    width: 70%;
+    height: auto;
+    margin-left: 1%;
+}
+
+#controls {
+    width: 29%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: monospace;
+}
+
+#number-people-container {
+    width: 50%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#submit-container {
+    width: 25%;
+    height: 40%;
+    margin-top: 5.5%;
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+#scale-container {
+    width: 25%;
+    height: 40%;
+    /* background-color: red; */
+    display: flex;
+    margin-top: 5.5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#number-people-container > input {
+    color: white;
+    width: 85%;
+    height: 50%;
+    text-align: center;
+    font-size: 300%;
+    background-color: rgba(45, 45, 45, 0.734);
+    border: none;
+}
+
+#number-people-container > label {
+    color: white;
+    font-size: 150%;
+}
+
+#submit-container > button {
+    width: 80%;
+    height: 30%;
+    background-color: grey;
+}
+
+#submit-container > label {
+    color: white;
+    font-size: 140%;
+}
+
+#scale-container > input {
+    width: 40%;
+    height: 40%;
+}
+
+#scale-container > label {
+    color: white;
+    font-size: 130%;
+}
+
+#size {
+    position: absolute;
+    left: 2%;
+    bottom: -8%;
+    font-size: 500%;
+    font-family: monospace;
+    color: black;
+}
+
+#thickness {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    font-size: 500%;
+    font-family: monospace;
+    color: black;
+}
