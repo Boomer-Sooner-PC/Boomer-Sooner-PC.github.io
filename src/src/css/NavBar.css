@@ -1,0 +1,62 @@
+.navbar {
+    background-color: var(--secondary-color);
+    padding-left: 4vh;
+    padding-right: 4vh;
+}
+
+.navbar-brand {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 500;
+}
+.navbar-brand:hover {
+    color: var(--text-secondary);
+}
+
+.navbar-toggler {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* color of image */
+.navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: var(--text-primary);
+}
+
+.nav-link:hover {
+    color: var(--text-secondary);
+    /* font-weight: bold; */
+}
+
+.active {
+    color: var(--accent) !important;
+    font-weight: bold;
+}
+
+.active:hover {
+    color: var(--accent) !important;
+}
+
+#marker {
+    background-color: white;
+    width: 0.3vw;
+    height: 2.5vh;
+    position: absolute;
+}
+
+#line {
+    background-color: white;
+    height: 0.3vw;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 8.5vh;
+}

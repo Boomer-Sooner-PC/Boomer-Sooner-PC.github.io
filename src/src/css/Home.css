@@ -1,0 +1,49 @@
+#planet {
+    width: 100vw;
+    height: 100vw;
+    border-radius: 50%;
+    border: 10px dashed white;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    left: -80vw;
+    top: calc(-50vw + 50vh);
+}
+#planet-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.moon {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    border: 10px dotted white;
+    position: absolute;
+}
+
+#moon-1 {
+    background-color: red;
+}
+
+#moon-2 {
+    background-color: orange;
+}
+
+#moon-3 {
+    background-color: yellow;
+}
+
+#moon-4 {
+    background-color: green;
+}
+
+#moon-5 {
+    background-color: blue;
+}
+
+#moon-6 {
+    background-color: purple;
+}
