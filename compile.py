@@ -15,8 +15,8 @@ def compile():
     # copy ./ projects to ./build folder where the compiled react code is
     shutil.copytree('./projects', './build/projects')
 
-    # copy ./404.html to ./build folder where the compiled react code is
-    shutil.copyfile('./404.html', './build/404.html')
+    # make a copy of the index.html as 404.html
+    shutil.copyfile('./build/index.html', './build/404.html')
 
     print("Compile complete!")
 

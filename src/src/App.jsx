@@ -8,14 +8,14 @@ function App() {
     return (
         <Router>
             <Routes>
+                {/* routes with /? in front */}
+                <Route path="/?/about" element={<About />} />
+                <Route path="/?/astronomy" element={<Astronomy />} />
+
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/astronomy" element={<Astronomy />} />
                 <Route path="*" element={<h1>404</h1>} />
-
-                {/* routes with /? in front */}
-                <Route path="/?/about" element={<About />} />
-                <Route path="/?/astronomy" element={<Astronomy />} />
             </Routes>
         </Router>
     );
