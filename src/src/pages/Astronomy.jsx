@@ -3,9 +3,12 @@ import Navbar from "components/NavBar";
 import Background from "components/Background";
 import "../css/Astronomy.css";
 
+import skymap from "../images/skymap.png";
+
 export default class Astronomy extends React.Component {
     async componentDidMount() {
         await this.load_gallerys();
+        this.draw_skymap();
         document.getElementById("loading").style.display = "none";
         document.getElementById("gallery-container").style.display = "block";
 
@@ -66,6 +69,7 @@ export default class Astronomy extends React.Component {
         let image_ids = Object.keys(images);
 
         let image_urls_thumbs = {};
+        let image_urls_small = {};
         for (let image in images) {
             image = images[image];
             let id = image.id;
@@ -87,6 +91,7 @@ export default class Astronomy extends React.Component {
 
             let imgurl = image.url_regular;
             image_urls_thumbs[id] = imgurl;
+            image_urls_small[id] = image.url_gallery;
         }
 
         let deepsky_ids = [];
@@ -103,20 +108,24 @@ export default class Astronomy extends React.Component {
             }
         }
 
-        let deepsky_photos = [];
+        this.deepsky_photos = [];
 
         for (let id of deepsky_ids) {
             let imgurl_full = image_urls_full[id];
-            deepsky_photos.push({
+            this.deepsky_photos.push({
                 src: image_urls_thumbs[id],
                 name: images[id].title,
                 link: imgurl_full,
+                ra: images[id].ra,
+                dec: images[id].dec,
+                thumb: image_urls_small[id],
+                id: id,
             });
         }
 
-        deepsky_photos.reverse();
+        this.deepsky_photos.reverse();
 
-        this.add_images_to_gallery(deepsky_photos, "deepsky_gallery");
+        this.add_images_to_gallery(this.deepsky_photos, "deepsky_gallery");
 
         // add solar system images
         let solar_system_ids = [];
@@ -163,13 +172,198 @@ export default class Astronomy extends React.Component {
         }
     }
 
+    async draw_skymap() {
+        let canvas = document.getElementById("skymap-canvas");
+        let ctx = canvas.getContext("2d");
+
+        let width = (canvas.width =
+            document.getElementById("skymap-canvas").clientWidth);
+        let height = (canvas.height =
+            document.getElementById("skymap-canvas").clientHeight);
+
+        let background = new Image();
+        background.src = skymap;
+
+        // wait for image to load
+        await new Promise((resolve) => {
+            background.onload = resolve;
+        });
+
+        let deepsky_photos = this.deepsky_photos;
+
+        function drawcanvas() {
+            ctx.drawImage(background, 0, 0, width, height);
+
+            for (let image of deepsky_photos) {
+                // draw a point on the map at the ra and dec of the image
+                let ra = (image.ra - 180) * -1 + 180;
+                let dec = image.dec * -1;
+
+                if (image.ra == null || image.dec == null) {
+                    continue;
+                }
+
+                let x = (ra / 360) * width;
+
+                let y = ((dec + 90) / 180) * height;
+                // point
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = "#dc82f8";
+                ctx.fill();
+            }
+        }
+
+        drawcanvas();
+
+        // load thumbnails
+        let thumbnails = {};
+        for (let image of this.deepsky_photos) {
+            let img = new Image();
+            img.src = image.thumb;
+            await new Promise((resolve) => {
+                img.onload = resolve;
+            });
+            thumbnails[image.id] = img;
+        }
+
+        // track mouse for hover
+        let last = null;
+
+        canvas.addEventListener("mousemove", (e) => {
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+            let ra = ((x / width) * 360 - 180) * -1 + 180;
+            let dec = ((y / height) * 180 - 90) * -1;
+
+            // check for images near the mouse
+            let closest = null;
+            let distance = 100000;
+            for (let image of this.deepsky_photos) {
+                if (image.ra == null || image.dec == null) {
+                    continue;
+                }
+                let _distance = Math.sqrt(
+                    (ra - image.ra) ** 2 + (dec - image.dec) ** 2
+                );
+                if (_distance < distance) {
+                    distance = _distance;
+                    closest = image;
+                }
+            }
+
+            distance = distance / width;
+
+            if (distance < 0.005) {
+                if (last != closest) {
+                    drawcanvas();
+                }
+                last = closest;
+                // draw the image
+                let img = thumbnails[closest.id];
+                let img_width = width / 10;
+                let img_height = width / 10;
+
+                let ra = (closest.ra - 180) * -1 + 180;
+                let dec = closest.dec * -1;
+                let x = (ra / 360) * width;
+                let y = ((dec + 90) / 180) * height;
+
+                ctx.drawImage(
+                    img,
+                    x - img_width / 2,
+                    y - img_height / 2,
+                    img_width,
+                    img_height
+                );
+            } else {
+                if (last != null) {
+                    drawcanvas();
+                }
+                last = null;
+            }
+        });
+
+        canvas.addEventListener("click", (e) => {
+            let x = e.offsetX;
+            let y = e.offsetY;
+            let ra = ((x / width) * 360 - 180) * -1 + 180;
+            let dec = ((y / height) * 180 - 90) * -1;
+
+            // check for images near the mouse
+            let closest = null;
+            let distance = 100000;
+            for (let image of this.deepsky_photos) {
+                if (image.ra == null || image.dec == null) {
+                    continue;
+                }
+                let _distance = Math.sqrt(
+                    (ra - image.ra) ** 2 + (dec - image.dec) ** 2
+                );
+                if (_distance < distance) {
+                    distance = _distance;
+                    closest = image;
+                }
+            }
+            distance = distance / width;
+            if (distance < 0.005) {
+                // jump down to the image in the gallery
+                let gallery = document.getElementById("deepsky_gallery");
+                let gallery_items =
+                    gallery.getElementsByClassName("gallery-item");
+                for (let item of gallery_items) {
+                    if (item.getAttribute("href") == closest.link) {
+                        item.scrollIntoView({ behavior: "smooth" });
+                        highlight_image(closest.link);
+                    }
+                }
+            }
+        });
+
+        function highlight_image(link) {
+            let gallery_items = document.getElementsByClassName("gallery-item");
+            for (let item of gallery_items) {
+                item.classList.remove("highlighted");
+                if (item.getAttribute("href") == link) {
+                    // children
+                    item = item.getElementsByClassName("image-wrapper")[0];
+                    item = item.getElementsByTagName("img")[0];
+
+                    item.classList.add("highlighted");
+                    setTimeout(() => {
+                        item.classList.remove("highlighted");
+                    }, 2000);
+                }
+            }
+        }
+    }
+
+    shift(n, amm, max, min) {
+        n = parseInt(n);
+        n += amm;
+        if (n > max) {
+            n = min + (n - max);
+        }
+        if (n < min) {
+            n = max - (min - n);
+        }
+        return n;
+    }
+
     render() {
         return (
             <div className="about">
                 <Navbar />
                 <Background />
+                <h1 id="loading">Loading gallery...</h1>
+                <div id="skymap-container">
+                    <h2>Where I've shot</h2>
+                    <div id="skymap">
+                        <canvas id="skymap-canvas"></canvas>
+                    </div>
+                </div>
                 <div id="content">
-                    <h1 id="loading">Loading gallery...</h1>
                     <div id="gallery-container">
                         <h2>Deepsky Gallery</h2>
                         <div

@@ -11,3 +11,7 @@ body {
     font-family: monospace;
     color: var(--text-primary);
 }
+
+iframe {
+    display: none;
+}
