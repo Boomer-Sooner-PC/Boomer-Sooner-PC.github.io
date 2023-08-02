@@ -8,6 +8,6 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    font-family: monospace;
     color: var(--text-primary);
 }

@@ -66,3 +66,5 @@ yarn-error.log
 .yarn-integrity
 
 .vscode
+src/.env
+.env
