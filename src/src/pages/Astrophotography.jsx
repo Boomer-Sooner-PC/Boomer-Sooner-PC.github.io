@@ -357,8 +357,35 @@ export default class Astronomy extends React.Component {
                 <Navbar />
                 <Background />
                 <h1 id="loading">Loading gallery...</h1>
+                <div id="about">
+                    <h1>Astrophotography</h1>
+                    <p>
+                        This page is for all my astrohpotography things. On it
+                        you'll find a skymap with points that show where the
+                        deepsky images I've taken are in the sky. If you hover
+                        over those points you'll see a preview of the image and
+                        if you click on them you'll be taken to the image in the
+                        gallery. The gallery is split into two sections, deepsky
+                        and solar system. The deepsky gallery is for images of
+                        galaxies, nebulae, star clusters, etc. The solar system
+                        gallery is for images of planets, the moon, and the sun.
+                        The gallery is sorted by date, with the most recent
+                        images at the top. Astrobin's api only allows for a
+                        small preview of the image to be shown, so if you want
+                        to view the full resolution image just click on the
+                        image in the gallery. On the Astrobin page you'll also
+                        be able to see information about the equipment I used to
+                        capture the image, as well as the exposure time and
+                        other information. All images are taken by me, and are
+                        hosted on{" "}
+                        <a href="https://www.astrobin.com/users/FuelRatting/">
+                            my Astrobin
+                        </a>
+                        .
+                    </p>
+                </div>
                 <div id="skymap-container">
-                    <h2>Where I've shot</h2>
+                    <h2>Skymap</h2>
                     <div id="skymap">
                         <canvas id="skymap-canvas"></canvas>
                     </div>

@@ -51,8 +51,8 @@ export default class NavBar extends React.Component {
                         <NavLink to="/about" className="nav-link">
                             About
                         </NavLink>
-                        <NavLink to="/astronomy" className="nav-link">
-                            Astronomy
+                        <NavLink to="/astrophotography" className="nav-link">
+                            Astrophotography
                         </NavLink>
                         <div id="marker"></div>
                         <div id="line"></div>

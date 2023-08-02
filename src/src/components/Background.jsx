@@ -6,153 +6,56 @@ import starImage from "../images/star.png";
 
 export default class Background extends React.Component {
     componentDidMount() {
-        let canvas = document.getElementById("background-canvas");
-        let ctx = canvas.getContext("2d");
-        let width = (canvas.width = $(document).width());
-        let height = (canvas.height = $(document).height());
+        "use strict";
+        const z1 = document.getElementsByClassName("z-1")[0];
+        const z2 = document.getElementsByClassName("z-2")[0];
+        const z3 = document.getElementsByClassName("z-3")[0];
+        const ratio = 0.05;
+        let x = 0;
+        let y = 0;
 
-        console.log(width, height);
-
-        // images0
-        let starimg = new Image();
-        starimg.src = starImage;
-
-        // fill background black
-        ctx.fillStyle = "#0a0a0a";
-        ctx.fillRect(0, 0, width, height);
-
-        let numberOfStars = (width * height) / 2000;
-        let stars = [];
-        for (let i = 0; i < numberOfStars; i++) {
-            stars.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                size: Math.random() * 15 + 5,
-                flicker: Math.random() / 3 + 0.7,
-            });
-        }
-
-        // track mouse
-        let mouse = {
-            x: -1000,
-            y: -1000,
-        };
-        document.addEventListener("mousemove", function (event) {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-            draw();
+        requestAnimationFrame(function animation() {
+            z1.style.transform =
+                "translate(" + x * ratio + "px," + y * ratio + "px)";
+            z2.style.transform =
+                "translate(" +
+                (x * ratio) / 2 +
+                "px," +
+                (y * ratio) / 2 +
+                "px) rotate(217deg)";
+            z3.style.transform =
+                "translate(" +
+                (x * ratio) / 3 +
+                "px," +
+                (y * ratio) / 3 +
+                "px) rotate(71deg)";
+            requestAnimationFrame(animation);
         });
-
-        // detect document resize jquery
-
-        $(window).resize(function () {
-            update_canvas();
-        });
-
-        // on scroll
-        $(window).scroll(function () {
-            let newHeight = $(document).height();
-            if (newHeight != height) {
-                update_canvas();
-            }
-        });
-
-        function update_canvas() {
-            // get body width and height
-            width = canvas.width = $(document).width();
-            height = canvas.height = $(document).height();
-            document.getElementById("background-canvas").style.height =
-                height + "px"; // only for height because scrolling
-
-            console.log(width, height);
-            numberOfStars = (width * height) / 2000;
-            stars = [];
-            for (let i = 0; i < numberOfStars; i++) {
-                stars.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    size: Math.random() * 15 + 5,
-                    flicker: Math.random() / 3 + 0.7,
-                });
-            }
-            draw();
-        }
-
-        function drawStars() {
-            for (let i = 0; i < numberOfStars; i++) {
-                let star = stars[i];
-
-                let size = star.size;
-
-                let mousex = mouse.x + $(window).scrollLeft();
-                let mousey = mouse.y + $(window).scrollTop();
-
-                let distancefromMouse = Math.sqrt(
-                    Math.pow(mousex - star.x, 2) + Math.pow(mousey - star.y, 2)
-                );
-
-                let vector = {
-                    x: 0,
-                    y: 0,
-                };
-
-                if (distancefromMouse < 100) {
-                    size =
-                        star.size + Math.pow(100 - distancefromMouse, 2) / 1000;
-
-                    let height_scrolled_px = $(window).scrollTop();
-
-                    vector = {
-                        x: star.x - mousex,
-                        y: star.y - mousey,
-                    };
-
-                    let magnitude = Math.pow(distancefromMouse, 2) / 100;
-
-                    vector.x /= magnitude;
-                    vector.y /= magnitude;
-                }
-
-                ctx.drawImage(
-                    starimg,
-                    star.x - size / 2 + vector.x,
-                    star.y - size / 2 + vector.y,
-                    size,
-                    size
-                );
-                // console.log(size);
-            }
-        }
-
-        function draw() {
-            // fill background black
-            ctx.fillStyle = "#0a0a0a";
-            ctx.fillRect(0, 0, width, height);
-
-            drawStars();
-
-            // requestAnimationFrame(draw);
-        }
-        draw();
-        starimg.onload = () => {
-            draw();
-        };
     }
 
     render() {
         return (
             <div id="background">
-                <canvas
-                    id="background-canvas"
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "block",
-                        position: "absolute",
-                        top: "0",
-                        left: "0",
-                        zIndex: "-1",
-                    }}></canvas>
+                <div class="bg">
+                    <div class="z-3">
+                        <div class="tile top-left animate-opacity freq-5"></div>
+                        <div class="tile top-right animate-opacity freq-5"></div>
+                        <div class="tile bottom-left animate-opacity freq-7"></div>
+                        <div class="tile bottom-right animate-opacity freq-10"></div>
+                    </div>
+                    <div class="z-2">
+                        <div class="tile top-left animate-opacity freq-9 delay-2"></div>
+                        <div class="tile top-right animate-opacity freq-5 delay-2"></div>
+                        <div class="tile bottom-left animate-opacity freq-6 delay-4"></div>
+                        <div class="tile bottom-right animate-opacity freq-10 delay-4"></div>
+                    </div>
+                    <div class="z-1">
+                        <div class="tile top-left animate-opacity freq-7 delay-2"></div>
+                        <div class="tile top-right animate-opacity freq-5 delay-4"></div>
+                        <div class="tile bottom-left animate-opacity freq-9 delay-2"></div>
+                        <div class="tile bottom-right animate-opacity freq-5 delay"></div>
+                    </div>
+                </div>
             </div>
         );
     }
