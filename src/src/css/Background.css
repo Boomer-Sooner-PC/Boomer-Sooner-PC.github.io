@@ -10,8 +10,9 @@
     }
 }
 .animate-opacity {
-    animation-name: slide-transparency;
-    animation-iteration-count: infinite;
+    /* animation-name: slide-transparency; */
+    /* animation-iteration-count: infinite; */
+    /* firefox performance */
 }
 .freq-5 {
     animation-duration: 5s;
@@ -59,7 +60,7 @@
 .tile {
     overflow: hidden;
     position: absolute;
-    opacity: 0;
+    opacity: 0.01;
     top: 0;
     left: 0;
     width: 100%;

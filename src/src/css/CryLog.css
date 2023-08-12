@@ -1,0 +1,194 @@
+body {
+    text-align: center;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#statistics {
+    width: 90%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    flex-direction: column;
+}
+
+#statistics > #stats {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#statistics > h2 {
+    margin: 1%;
+    font-size: 250%;
+}
+
+.stat > h3 {
+    font-size: 150%;
+}
+
+#statistics > #stats > .stat {
+    text-align: center;
+    width: 15vw;
+    margin: 1%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.line {
+    width: 80%;
+    height: 0.5vh;
+    background-color: var(--accent);
+    margin: 1.5vh 0 1.5vh 0;
+}
+
+#pie-and-stats {
+    width: 90vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5%;
+}
+
+#per-person-stats {
+    width: 32.5%;
+    height: 100%;
+}
+
+#pie-charts {
+    width: 60vw;
+    /* background-color: var(--primary-color); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#pie-chart-key {
+    width: 30%;
+    /* background-color: red; */
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#pie-chart-key > .key-item {
+    width: 90%;
+}
+
+#percent-of-time-chart,
+#num-of-cries-chart {
+    width: 20vw !important;
+    height: 20vw !important;
+    border-radius: 50%; /* Change border-radius to 50% for a circle */
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pie-lable {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    /* large drop shadow */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.pie-tooltip {
+    display: none;
+    position: absolute;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#per-person-stats-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 0.2vw solid var(--primary-color);
+}
+
+#per-person-stats-container > #top-bar {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#per-person-stats-container > #top-bar > .bar-title {
+    font-size: 200%;
+    margin: 0 5% 0 5%;
+}
+
+#per-person-stats-container > #top-bar > select {
+    margin-right: 5%;
+    height: 50%;
+}
+
+#person-statistics {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.person-stat {
+    width: 40%;
+    margin: 0 5% 0 5%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.person-stat > h3 {
+    font-size: 150%;
+}
+
+.person-stat > .line {
+    width: 80%;
+    height: 0.5vh;
+    background-color: var(--accent);
+    margin: 1.5vh 0 1.5vh 0;
+}
+
+/* if on phone */
+@media only screen and (max-width: 800px) {
+    #statistics > #stats > .stat {
+        width: 30vw;
+    }
+    #pie-and-stats > div {
+        width: 95vw;
+        margin-top: 5vw;
+    }
+
+    #percent-of-time-chart,
+    #num-of-cries-chart {
+        width: 40vw !important;
+        height: 40vw !important;
+    }
+}

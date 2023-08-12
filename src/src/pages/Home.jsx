@@ -8,11 +8,16 @@ export default class Home extends React.Component {
         let scrollAmmount = 0; // used for tracking scroll to do the orbitals
 
         // log scroll ammount
-        window.addEventListener("wheel", (event) => {
-            let dir = event.deltaY;
-            // scrollAmmount += dir;
-            updateScrollAmount(dir / 10);
-        });
+        window.addEventListener(
+            "wheel",
+            (event) => {
+                event.preventDefault();
+                let dir = event.deltaY;
+                // scrollAmmount += dir;
+                updateScrollAmount(dir / 10);
+            },
+            { passive: false }
+        );
 
         window.addEventListener(
             "touchmove",
@@ -38,8 +43,10 @@ export default class Home extends React.Component {
         }
 
         function updateOrbits() {
-            let planet = document.getElementById("planet");
-            planet.style.transform = "rotate(" + scrollAmmount + "deg)";
+            try {
+                let planet = document.getElementById("planet");
+                planet.style.transform = "rotate(" + scrollAmmount + "deg)";
+            } catch (e) {}
         }
 
         function updateMoons() {
@@ -58,8 +65,9 @@ export default class Home extends React.Component {
                 moons[i].style.top = `calc(${y + "vw"} + 50vh)`;
             }
         }
-
-        updateMoons();
+        try {
+            updateMoons();
+        } catch (e) {}
     }
     render() {
         return (

@@ -11,30 +11,38 @@ export default class NavBar extends React.Component {
             y: 0,
         };
 
-        let active = document.getElementsByClassName("active")[0];
+        try {
+            let active = document.getElementsByClassName("active")[0];
 
-        // get active coords
-        activeCoords.x = active.getBoundingClientRect().x;
-        activeCoords.y = active.getBoundingClientRect().y;
-        let activeWidth = active.getBoundingClientRect().width;
-        let activeHeight = active.getBoundingClientRect().height;
+            // get active coords
+            activeCoords.x = active.getBoundingClientRect().x;
+            activeCoords.y = active.getBoundingClientRect().y;
+            let activeWidth = active.getBoundingClientRect().width;
+            let activeHeight = active.getBoundingClientRect().height;
 
-        activeCoords.x = activeCoords.x + activeWidth / 2;
-        activeCoords.y = activeCoords.y + activeHeight * 0.8;
+            activeCoords.x = activeCoords.x + activeWidth / 2;
+            activeCoords.y = activeCoords.y + activeHeight * 0.8;
 
-        // set marker position
-        let marker = document.getElementById("marker");
-        marker.style.left = activeCoords.x + "px";
-        marker.style.top = activeCoords.y + "px";
+            // set marker position
+            let marker = document.getElementById("marker");
+            marker.style.left = activeCoords.x + "px";
+            marker.style.top = activeCoords.y + "px";
 
-        // set height of market to the top of the marker to the bottom of the navbar
-        let navbar = document.getElementById("navbar");
-        let navbarBottom = navbar.getBoundingClientRect().bottom;
-        marker.style.height = navbarBottom - activeCoords.y + "px";
+            // set height of market to the top of the marker to the bottom of the navbar
+            let navbar = document.getElementById("navbar");
+            let navbarBottom = navbar.getBoundingClientRect().bottom;
+            marker.style.height = navbarBottom - activeCoords.y + "px";
 
-        // get bottom of marker y coord
-        let markerBottom = marker.getBoundingClientRect().bottom;
-        document.getElementById("line").style.top = markerBottom + "px";
+            // get bottom of marker y coord
+            let markerBottom = marker.getBoundingClientRect().bottom;
+            document.getElementById("line").style.top = markerBottom + "px";
+        } catch (e) {
+            document.getElementById("marker").style.display = "none";
+            // get bounds of navbar
+            let navbar = document.getElementById("navbar");
+            let navbarBottom = navbar.getBoundingClientRect().bottom;
+            document.getElementById("line").style.top = navbarBottom + "px";
+        }
     }
     render() {
         return (
