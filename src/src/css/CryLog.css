@@ -176,6 +176,35 @@ body {
     margin: 1.5vh 0 1.5vh 0;
 }
 
+#graphs {
+    width: 90%;
+    height: 80vh;
+    margin: 0 5% 5% 5%;
+    /* background-color: var(--primary-color); */
+}
+
+#graph-container {
+    width: 100%;
+    height: 100%;
+}
+
+#graph {
+    width: 90%;
+    height: 80%;
+    margin: 5%;
+}
+
+#time-cry-graph {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#x-axis-labels {
+    width: 100%;
+    height: 20%;
+}
+
 /* if on phone */
 @media only screen and (max-width: 800px) {
     #statistics > #stats > .stat {
@@ -184,6 +213,9 @@ body {
     #pie-and-stats > div {
         width: 95vw;
         margin-top: 5vw;
+    }
+    #graph {
+        margin-top: 60%;
     }
 
     #percent-of-time-chart,
