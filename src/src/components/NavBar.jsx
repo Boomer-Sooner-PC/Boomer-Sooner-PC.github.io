@@ -35,13 +35,13 @@ export default class NavBar extends React.Component {
 
             // get bottom of marker y coord
             let markerBottom = marker.getBoundingClientRect().bottom;
-            document.getElementById("line").style.top = markerBottom + "px";
+            document.getElementById("nav-line").style.top = markerBottom + "px";
         } catch (e) {
             document.getElementById("marker").style.display = "none";
             // get bounds of navbar
             let navbar = document.getElementById("navbar");
             let navbarBottom = navbar.getBoundingClientRect().bottom;
-            document.getElementById("line").style.top = navbarBottom + "px";
+            document.getElementById("nav-line").style.top = navbarBottom + "px";
         }
     }
     render() {
@@ -62,8 +62,11 @@ export default class NavBar extends React.Component {
                         <NavLink to="/astrophotography" className="nav-link">
                             Astrophotography
                         </NavLink>
+                        <NavLink to="/projects" className="nav-link">
+                            Projects
+                        </NavLink>
                         <div id="marker"></div>
-                        <div id="line"></div>
+                        <div id="nav-line"></div>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

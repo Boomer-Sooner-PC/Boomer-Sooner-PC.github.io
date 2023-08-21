@@ -1,0 +1,47 @@
+.projects {
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.project {
+    width: 90vw;
+    margin: 1%;
+    text-align: left;
+}
+
+.project > .project-desc {
+    margin-left: 1%;
+}
+
+.project-desc > p {
+    margin: 1% 2% 1% 2%;
+}
+
+.project-desc > h2 {
+    margin-left: 1%;
+}
+
+.project > a {
+    font-weight: bold;
+}
+
+.project-header {
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+}
+
+.project-header > .project-title {
+    margin-left: 1%;
+    font-size: 4vw;
+}
+
+.project-header > a {
+    margin: 2%;
+}

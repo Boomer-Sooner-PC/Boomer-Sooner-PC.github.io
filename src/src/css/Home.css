@@ -25,7 +25,17 @@
 }
 
 #moon-1 {
-    background-color: red;
+    width: 60vw;
+    height: 30vh;
+    border-radius: 0;
+    border: 1px solid white;
+    text-align: center;
+    text-justify: center;
+}
+
+#moon-1 > h1 {
+    font-size: 6vw;
+    margin-top: 6vh;
 }
 
 #moon-2 {

@@ -1,12 +1,8 @@
 import React from "react";
-import $ from "jquery";
 import "../css/Background.css";
-
-import starImage from "../images/star.png";
 
 export default class Background extends React.Component {
     componentDidMount() {
-        "use strict";
         const z1 = document.getElementsByClassName("z-1")[0];
         const z2 = document.getElementsByClassName("z-2")[0];
         const z3 = document.getElementsByClassName("z-3")[0];

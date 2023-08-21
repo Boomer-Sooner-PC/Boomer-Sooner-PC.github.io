@@ -95,7 +95,7 @@ export default class Astronomy extends React.Component {
         }
 
         let deepsky_ids = [];
-        let system_ids = [];
+        // let system_ids = [];
 
         // sort images into categories
         for (let i = 0; i < image_ids.length; i++) {
@@ -103,7 +103,7 @@ export default class Astronomy extends React.Component {
             let image = images[image_id];
 
             // if the image has been platesolved, it wil hava a ra value making it a deepsky image
-            if (image.solution_status != "MISSING") {
+            if (image.solution_status !== "MISSING") {
                 deepsky_ids.push(image_id);
             }
         }
@@ -134,7 +134,7 @@ export default class Astronomy extends React.Component {
             let image = images[image_id];
 
             // if the image has been platesolved, it wil hava a ra value making it a deepsky image
-            if (image.solution_status == "MISSING") {
+            if (image.solution_status === "MISSING") {
                 solar_system_ids.push(image_id);
             }
         }
@@ -256,7 +256,7 @@ export default class Astronomy extends React.Component {
             distance = distance / width;
 
             if (distance < 0.005) {
-                if (last != closest) {
+                if (last !== closest) {
                     drawcanvas();
                 }
                 last = closest;
@@ -313,7 +313,7 @@ export default class Astronomy extends React.Component {
                 let gallery_items =
                     gallery.getElementsByClassName("gallery-item");
                 for (let item of gallery_items) {
-                    if (item.getAttribute("href") == closest.link) {
+                    if (item.getAttribute("href") === closest.link) {
                         item.scrollIntoView({ behavior: "smooth" });
                         highlight_image(closest.link);
                     }
@@ -325,7 +325,7 @@ export default class Astronomy extends React.Component {
             let gallery_items = document.getElementsByClassName("gallery-item");
             for (let item of gallery_items) {
                 item.classList.remove("highlighted");
-                if (item.getAttribute("href") == link) {
+                if (item.getAttribute("href") === link) {
                     // children
                     item = item.getElementsByClassName("image-wrapper")[0];
                     item = item.getElementsByTagName("img")[0];

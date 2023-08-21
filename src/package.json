@@ -10,6 +10,7 @@
         "chart.js": "^4.3.3",
         "dotenv": "^16.3.1",
         "jquery": "^3.7.0",
+        "markdown-it": "^13.0.1",
         "popper": "^1.0.1",
         "react": "^18.2.0",
         "react-bootstrap": "^2.8.0",
@@ -22,10 +23,9 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "compile": "node compile.js",
+        "start": "npm run compile & react-scripts start",
+        "build": "npm run compile & react-scripts build"
     },
     "eslintConfig": {
         "extends": [
