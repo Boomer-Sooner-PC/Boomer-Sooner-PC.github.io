@@ -1,5 +1,3 @@
-# Correlations in the AllRecipes Database
-
 ## Explanation
 
 This is a tool to visualize the correlations between ingredients in the AllRecipes database. I was inspired to make this by [this](https://www.reddit.com/r/dataisbeautiful/comments/wuzidf/oc_correlation_between_spices_shared_in_recipes/) Reddit post. It generates a correlation matrix between the selected ingredients and then displays it as a heatmap. The color of each cell represents the correlation factor between the two ingredients.
