@@ -6,6 +6,11 @@ import "../css/NavBar.css";
 
 export default class NavBar extends React.Component {
     componentDidMount() {
+        this.moveMarker();
+        window.addEventListener("resize", this.moveMarker);
+    }
+
+    moveMarker() {
         let activeCoords = {
             x: 0,
             y: 0,
@@ -25,7 +30,8 @@ export default class NavBar extends React.Component {
 
             // set marker position
             let marker = document.getElementById("marker");
-            marker.style.left = activeCoords.x + "px";
+            let markerWidth = marker.getBoundingClientRect().width;
+            marker.style.left = activeCoords.x - markerWidth / 2 + "px";
             marker.style.top = activeCoords.y + "px";
 
             // set height of market to the top of the marker to the bottom of the navbar
@@ -44,6 +50,7 @@ export default class NavBar extends React.Component {
             document.getElementById("nav-line").style.top = navbarBottom + "px";
         }
     }
+
     render() {
         return (
             // bootstrap navbar

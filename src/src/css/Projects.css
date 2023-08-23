@@ -6,13 +6,14 @@
     flex-wrap: wrap;
 }
 
-.project {
-    width: 90vw;
-    margin: 1%;
+.project-content {
+    width: 80vw;
+    margin: 1% 1% 1% 10%;
     text-align: left;
+    position: static;
 }
 
-.project > .project-desc {
+.project-content > .project-desc {
     margin-left: 1%;
     margin-top: 1%;
 }
@@ -25,35 +26,16 @@
     margin-left: 1%;
 }
 
-.project > a {
-    font-weight: bold;
-}
-
-.project-dropdown {
-    cursor: pointer;
-}
-
-.project-header {
-    width: 90vw;
-    height: 6vh;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    text-align: center;
-    margin-bottom: 1vh;
-}
-
-.project-header > .project-title {
+.project-desc > * {
     margin-left: 1%;
-    font-size: 3vw;
 }
 
 .project-header > a {
-    margin: 2%;
+    margin: 1% 1% 1% 2%;
 }
 
 .project-gallery {
-    width: 85vw;
+    width: 70vw;
     height: 60vh;
     background-color: var(--primary-color);
 }
@@ -67,11 +49,18 @@
     cursor: pointer;
 }
 
+.arrow:hover {
+    opacity: 0.5;
+}
+.project-dropdown:hover {
+    opacity: 0.5;
+}
+
 .right {
     /* rotate 90 */
     transform: rotate(-90deg);
     position: absolute;
-    margin-left: 81vw;
+    margin-left: 66vw;
 }
 
 .left {
@@ -93,5 +82,40 @@
 }
 
 .github-img {
-    margin: 0 1% 0 0;
+    height: 80%;
+}
+.devpost-img {
+    height: 80%;
+}
+
+.project-header {
+    width: 80vw;
+    height: 8vh;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.project-header > .icon {
+    height: 70%;
+    margin: 0 0% 0 1%;
+}
+
+.project-header > .project-title {
+    margin-left: 1%;
+    font-size: 2.6rem;
+    overflow: hidden;
+    color: White;
+}
+
+.project-title {
+    margin-left: 1%;
+    font-size: 2vw;
+}
+
+.project-description {
+    width: 70vw;
+    margin-left: 2vw;
 }

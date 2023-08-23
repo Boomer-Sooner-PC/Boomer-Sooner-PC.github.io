@@ -16,7 +16,7 @@ h1 {
 }
 
 #about > p {
-    margin: 0 5% 0 5%;
+    margin: 0 20% 0 20%;
 }
 #skymap-container {
     width: 100%;
@@ -34,12 +34,12 @@ h1 {
 }
 
 #skymap {
-    height: 45vw;
+    height: 50vw;
 }
 
 #skymap-canvas {
-    width: 90vw;
-    height: 45vw;
+    width: 100vw;
+    height: 50vw;
     position: relative;
 }
 

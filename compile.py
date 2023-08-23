@@ -13,7 +13,7 @@ def compile():
     print('React code compiled successfully!')
 
     # copy ./ projects to ./build folder where the compiled react code is
-    shutil.copytree('./projects', './build/projects')
+    shutil.copytree('./projects', './build/builds')
 
     # make a copy of the index.html as 404.html
     shutil.copyfile('./build/index.html', './build/404.html')
