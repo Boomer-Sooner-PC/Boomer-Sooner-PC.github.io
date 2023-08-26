@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a282662e.css",
-    "main.js": "/static/js/main.3db2961a.js",
+    "main.css": "/static/css/main.8310799b.css",
+    "main.js": "/static/js/main.eeef1785.js",
     "static/media/img26.png": "/static/media/img26.60fcc83e3c2abb7d7f24.png",
     "static/media/img27.png": "/static/media/img27.eaf7960571ec0116a829.png",
     "static/media/img29.png": "/static/media/img29.77b17c7bf80394d0a1f3.png",
@@ -15,6 +15,7 @@
     "static/media/img2.png": "/static/media/img2.20f65ae425eef7f0cf6b.png",
     "static/media/img4.png": "/static/media/img4.da804e603fbc1a14cd4a.png",
     "static/media/img6.png": "/static/media/img6.f6e3a63514f2a1fcc442.png",
+    "static/media/world.svg": "/static/media/world.630aefe50eca897ef9dfdffb4d501a93.svg",
     "static/media/img24.png": "/static/media/img24.95aa64d0b8b980ea1946.png",
     "static/media/img15.png": "/static/media/img15.b8ea1d7ead7441fc8964.png",
     "static/media/skymap.png": "/static/media/skymap.a82fd424cccd38b81e33.png",
@@ -36,11 +37,11 @@
     "static/media/github.png": "/static/media/github.dd2074acf5a60ca46171.png",
     "static/media/devpost.png": "/static/media/devpost.c83ab1258c4084d0a17c.png",
     "index.html": "/index.html",
-    "main.a282662e.css.map": "/static/css/main.a282662e.css.map",
-    "main.3db2961a.js.map": "/static/js/main.3db2961a.js.map"
+    "main.8310799b.css.map": "/static/css/main.8310799b.css.map",
+    "main.eeef1785.js.map": "/static/js/main.eeef1785.js.map"
   },
   "entrypoints": [
-    "static/css/main.a282662e.css",
-    "static/js/main.3db2961a.js"
+    "static/css/main.8310799b.css",
+    "static/js/main.eeef1785.js"
   ]
 }

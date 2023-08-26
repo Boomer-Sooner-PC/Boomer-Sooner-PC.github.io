@@ -3,6 +3,8 @@ import NavBar from "components/NavBar";
 import Background from "components/Background";
 import "../css/Home.css";
 
+import worldSVG from "../images/world.svg";
+
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +32,7 @@ export default class Home extends React.Component {
     handleWheelEvent = (event) => {
         event.preventDefault();
         const dir = event.deltaY;
-        this.updateScrollAmount(dir / 10);
+        this.updateScrollAmount(-dir / 10);
     };
 
     handleTouchMoveEvent = (event) => {
@@ -54,8 +56,17 @@ export default class Home extends React.Component {
 
     updateOrbits = () => {
         try {
-            const planet = document.getElementById("planet");
-            planet.style.transform = `rotate(${this.scrollAmount}deg)`;
+            // Get the planet images container
+            const planetImagesContainer =
+                document.getElementById("planet-images");
+
+            // Calculate the new translateX value based on scrollAmount
+            console.log(this.scrollAmount);
+
+            const translateX = -(this.scrollAmount / 360) * 50 + "%";
+
+            // Apply the new translateX value to the container
+            planetImagesContainer.style.transform = `translateX(${translateX})`;
         } catch (e) {}
     };
 
@@ -95,10 +106,29 @@ export default class Home extends React.Component {
                 <Background />
 
                 <div id="planet-container">
-                    <div id="planet"></div>
+                    <div id="planet">
+                        <div id="planet-images">
+                            <img
+                                src={worldSVG}
+                                alt="world"
+                                className="planet-image"
+                                id="world-1"
+                            />
+                            <img
+                                src={worldSVG}
+                                alt="world"
+                                className="planet-image"
+                                id="world-2"
+                            />
+                        </div>
+                    </div>
                     <div id="moons">
                         <div className="moon" id="moon-1">
                             <h1 id="title">Michael Manders</h1>
+                            <p>
+                                Hi! I'm a student in Texas with a passion for
+                                programming and astronomy.
+                            </p>
                         </div>
                         <div className="moon" id="moon-2"></div>
                         <div className="moon" id="moon-3"></div>
