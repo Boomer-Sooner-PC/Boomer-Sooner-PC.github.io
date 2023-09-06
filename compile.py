@@ -18,6 +18,12 @@ def compile():
     # make a copy of the index.html as 404.html
     shutil.copyfile('./build/index.html', './build/404.html')
 
+    # remove all .md files from the folders in the ./build/builds folder
+    for root, dirs, files in os.walk('./build/builds'):
+        for file in files:
+            if file.endswith('.md'):
+                os.remove(os.path.join(root, file))
+
     print("Compile complete!")
 
 
