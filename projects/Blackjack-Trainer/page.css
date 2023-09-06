@@ -1,0 +1,258 @@
+body {
+    background-image: url("webimages/background.jpg");
+    background-repeat: repeat;
+    /* fill whole page */
+    background-size: 180vw auto;
+    margin: 0;
+    padding: 0;
+}
+
+#hands {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+#hands > #dealer {
+    width: 60vw;
+    height: 35vh;
+    margin-top: 5vh;
+    background-color: rgba(255, 255, 255, 0.253);
+    display: flex;
+    justify-content: center;
+}
+
+#hands > #player {
+    width: 60vw;
+    height: 35vh;
+    margin-top: 20vh;
+    background-color: rgba(255, 255, 255, 0.272);
+    display: flex;
+    justify-content: center;
+}
+
+#hands > * > img {
+    margin: 1vh 1vw 1vh 1vw;
+    border-radius: 0.5vw;
+}
+
+#options {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#options > .option {
+    width: 10vw;
+    font-family: "Roboto", sans-serif;
+    height: 10vh;
+    margin: 2vw;
+    background-color: rgb(224, 65, 62);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#options > .option:hover {
+    background-color: rgb(186, 55, 53);
+}
+
+.option > .text {
+    font-size: 1.3vw;
+    font-weight: 800;
+    color: white;
+}
+
+.option > .key {
+    font-size: 1vw;
+    color: white;
+    font-weight: 400;
+}
+
+#stats {
+    width: 15vw;
+    height: 35vh;
+    background-color: rgb(224, 65, 62);
+    position: absolute;
+    left: 2.5vw;
+    top: 5vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#stats > div {
+    width: 80%;
+    height: 15%;
+    margin: 5% 0 5% 5%;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+#stats > div > .label {
+    font-size: 1vw;
+    font-weight: 800;
+    margin: 0;
+}
+
+#cheatsheet {
+    width: 15vw;
+    height: 35vh;
+    /* background-color: white; */
+    position: absolute;
+    right: 2.5vw;
+    top: 5vh;
+}
+
+#cheatsheet > * > img {
+    width: 100%;
+    height: auto;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+    position: absolute;
+}
+
+/* fade in opacity of img */
+
+#cheatsheet > * > img:hover {
+    opacity: 1;
+}
+
+#cheatsheet > #hider {
+    width: 15vw;
+    height: 24.232vw;
+    background-color: rgb(103, 103, 103);
+}
+
+#cheatsheet > * > p {
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5vw;
+    font-family: "Roboto", sans-serif;
+    transition: opacity 0.3s;
+}
+
+#mistake {
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    top: 35vh;
+    left: 35vw;
+    background-color: rgb(85, 85, 85);
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    display: none;
+}
+
+#mistake > p {
+    color: white;
+    font-size: 2.5vw;
+    font-weight: 800;
+    margin: 1vw;
+}
+
+#mistake > #correct {
+    font-size: 1.5vw;
+    color: white;
+    margin: 1vw;
+}
+
+#mistake > #dismiss {
+    position: inherit;
+    width: 30%;
+    height: 20%;
+    background-color: rgb(36, 99, 24);
+    color: rgb(255, 255, 255);
+    font-size: 1vw;
+    text-align: center;
+
+    border-radius: 0.5vw;
+
+    left: 35%;
+    bottom: 5%;
+}
+
+/* mobile formatting */
+
+@media only screen and (max-width: 600px) {
+    #hands > div {
+        width: 90vw !important;
+        height: 30vh !important;
+    }
+
+    #hands > * {
+        margin-top: 2vh !important;
+    }
+
+    #hands > div > img {
+        max-width: calc(90vw / 2 - 2vw) !important;
+    }
+
+    #stats {
+        display: none;
+    }
+
+    #cheatsheet {
+        display: none;
+    }
+
+    #mistake {
+        width: 90vw;
+        height: 30vh;
+        top: 35vh;
+        left: 5vw;
+    }
+
+    #mistake > p {
+        font-size: 7vw;
+    }
+
+    #mistake > #correct {
+        font-size: 5vw;
+    }
+
+    #mistake > #dismiss {
+        font-size: 3vw;
+    }
+
+    #options {
+        width: 100%;
+        height: 30%;
+        position: relative;
+        margin-top: 70vh;
+    }
+
+    #options > .option {
+        width: 25%;
+    }
+
+    #options > .option > .text {
+        font-size: 3vw;
+    }
+
+    #options > .option > .key {
+        display: none;
+    }
+}

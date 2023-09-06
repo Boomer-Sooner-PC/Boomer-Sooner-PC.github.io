@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import ProjectHome from "./ProjectsHome";
 // start import
+import BLACKJACKTRAINER from "../pages/projects/Blackjack-Trainer";
 import CARBONCONSULTINGHACKDFW2022 from "../pages/projects/Carbon-Consulting--HackDFW2022";
 import CORRELATIONSINALLRECIPES from "../pages/projects/correlations-in-allrecipes";
 import EDUCATORSEXCHANGERISDXACMHACKATHON from "../pages/projects/Educators-Exchange--RISDxACM-Hackathon";
@@ -17,6 +18,7 @@ import WIFICONTROLLEDLEDSIGN from "../pages/projects/WiFi-Controlled-LED-Sign";
 export default class SecretRouter extends React.Component {
     render() {
         return <Routes>
+<Route path="/Blackjack-Trainer" element={<BLACKJACKTRAINER />} />
 <Route path="/Carbon-Consulting--HackDFW2022" element={<CARBONCONSULTINGHACKDFW2022 />} />
 <Route path="/correlations-in-allrecipes" element={<CORRELATIONSINALLRECIPES />} />
 <Route path="/Educators-Exchange--RISDxACM-Hackathon" element={<EDUCATORSEXCHANGERISDXACMHACKATHON />} />

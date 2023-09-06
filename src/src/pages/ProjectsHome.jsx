@@ -13,6 +13,7 @@ export default class ProjectHome extends React.Component {
                 <h1>Projects</h1>
                 <h1>Software</h1>
                 <div className="software-projects">
+<div className="project Blackjack-Trainer"><a href="/projects/Blackjack-Trainer"><h3>Blackjack Trainer</h3></a></div>
 <div className="project correlations-in-allrecipes"><a href="/projects/correlations-in-allrecipes"><h3>Correlations In Allrecipes</h3></a></div>
 <div className="project one-pizza-team-calculator"><a href="/projects/one-pizza-team-calculator"><h3>One Pizza Team Calculator</h3></a></div>
 <div className="project ranked-choice-voting-website"><a href="/projects/ranked-choice-voting-website"><h3>Ranked Choice Voting Website</h3></a></div>
