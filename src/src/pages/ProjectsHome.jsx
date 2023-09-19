@@ -28,6 +28,7 @@ export default class ProjectHome extends React.Component {
                 <div className="competition-projects">
 <div className="project Carbon-Consulting--HackDFW2022"><a href="/projects/Carbon-Consulting--HackDFW2022"><h3>Carbon Consulting  HackDFW2022</h3></a></div>
 <div className="project Educators-Exchange--RISDxACM-Hackathon"><a href="/projects/Educators-Exchange--RISDxACM-Hackathon"><h3>Educators Exchange  RISDxACM Hackathon</h3></a></div>
+<div className="project Oak-Operations--HackSMU2023"><a href="/projects/Oak-Operations--HackSMU2023"><h3>Oak Operations  HackSMU2023</h3></a></div>
 <div className="project SquirrelSpace--TAMUHack2023"><a href="/projects/SquirrelSpace--TAMUHack2023"><h3>SquirrelSpace  TAMUHack2023</h3></a></div>
 </div>
                 {/* competition */}

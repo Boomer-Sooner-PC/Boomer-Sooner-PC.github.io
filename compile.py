@@ -24,6 +24,10 @@ def compile():
             if file.endswith('.md'):
                 os.remove(os.path.join(root, file))
 
+    # make a file called CNAME in the ./build folder with "michaelmanders.com" in it
+    with open('./build/CNAME', 'w') as f:
+        f.write('michaelmanders.com')
+
     print("Compile complete!")
 
 

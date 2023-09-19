@@ -7,6 +7,7 @@ import BLACKJACKTRAINER from "../pages/projects/Blackjack-Trainer";
 import CARBONCONSULTINGHACKDFW2022 from "../pages/projects/Carbon-Consulting--HackDFW2022";
 import CORRELATIONSINALLRECIPES from "../pages/projects/correlations-in-allrecipes";
 import EDUCATORSEXCHANGERISDXACMHACKATHON from "../pages/projects/Educators-Exchange--RISDxACM-Hackathon";
+import OAKOPERATIONSHACKSMU2023 from "../pages/projects/Oak-Operations--HackSMU2023";
 import ONEPIZZATEAMCALCULATOR from "../pages/projects/one-pizza-team-calculator";
 import RANKEDCHOICEVOTINGWEBSITE from "../pages/projects/ranked-choice-voting-website";
 import SCHOOLPOINTSSYSTEM from "../pages/projects/school-points-system";
@@ -22,6 +23,7 @@ export default class SecretRouter extends React.Component {
 <Route path="/Carbon-Consulting--HackDFW2022" element={<CARBONCONSULTINGHACKDFW2022 />} />
 <Route path="/correlations-in-allrecipes" element={<CORRELATIONSINALLRECIPES />} />
 <Route path="/Educators-Exchange--RISDxACM-Hackathon" element={<EDUCATORSEXCHANGERISDXACMHACKATHON />} />
+<Route path="/Oak-Operations--HackSMU2023" element={<OAKOPERATIONSHACKSMU2023 />} />
 <Route path="/one-pizza-team-calculator" element={<ONEPIZZATEAMCALCULATOR />} />
 <Route path="/ranked-choice-voting-website" element={<RANKEDCHOICEVOTINGWEBSITE />} />
 <Route path="/school-points-system" element={<SCHOOLPOINTSSYSTEM />} />

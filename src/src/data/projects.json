@@ -47,13 +47,27 @@
         "github": "https://github.com/michael-manders/Hackathons/tree/main/RISDxACM%20Hackathon",
         "category": "competition"
     },
+    "Oak-Operations--HackSMU2023": {
+        "name": "Oak-Operations--HackSMU2023",
+        "build": false,
+        "about": "## About\r\n\r\nThis is my team's project made for HackSMU and specifically the CBRE Challenge. Check out the [YouTube](https://youtu.be/M10nQZ4L8gM?si=Fvrnjsj2Xstf7NAx), Devpost and GitHub for more details.\r\n\r\n## Awards\r\n\r\n2nd place CBRE challenge\r\n\r\nBest use of Google Cloud\r\n",
+        "images": [
+            "img11.png",
+            "img12.png",
+            "img13.png",
+            "img14.png"
+        ],
+        "github": "https://github.com/michael-manders/Hackathons/tree/main/HackSMU",
+        "devpost": "https://devpost.com/software/oak-operations?ref_content=my-projects-tab&ref_feature=my_projects",
+        "category": "competition"
+    },
     "one-pizza-team-calculator": {
         "name": "one-pizza-team-calculator",
         "build": true,
         "about": "## About\r\n\r\nThis is a tool that calculates the size of a single pizza needed to feed a team thereby making it a one pizza team. It uses three.js to visualize the pizza and the scales. It is intentially designed to look bad.\r\n",
         "images": [
-            "img11.png",
-            "img12.png"
+            "img15.png",
+            "img16.png"
         ],
         "github": "https://github.com/michael-manders/One-Pizza-Team-Calculator",
         "category": "software"
@@ -63,10 +77,10 @@
         "build": false,
         "about": "## About\n\nThis is a website similar to Menti.com but instead of first past the post it uses ranked choice voting to calculate the winner.\n\n## Start\n\nTo run this locally simply install Node.js on your computer, open the directory in a terminal and type `node .`\n",
         "images": [
-            "img13.png",
-            "img14.png",
-            "img15.png",
-            "img16.png"
+            "img17.png",
+            "img18.png",
+            "img19.png",
+            "img20.png"
         ],
         "github": "https://github.com/michael-manders/RCV-Polling-Website",
         "category": "software"
@@ -76,10 +90,10 @@
         "build": false,
         "about": "## About\r\n\r\nThis is a project I built for a teacher a few years ago to easily be able to give points to students given the period and desk they sit at. It was mainly a way for me to learn nodejs, html, and css.\r\n\r\nIt has a student portal where student can select their class period and see how many points they have. It also has a teacher portal which requires a password. In that portal the teacher can give and take points as well as edit names for each class period.\r\n\r\n## Running\r\n\r\n1. run `npm install`\r\n2. run `node .`\r\n",
         "images": [
-            "img17.png",
-            "img18.png",
-            "img19.png",
-            "img20.png"
+            "img21.png",
+            "img22.png",
+            "img23.png",
+            "img24.png"
         ],
         "github": "https://github.com/michael-manders/school-money-system/tree/main",
         "category": "software"
@@ -89,9 +103,9 @@
         "build": false,
         "about": "## About\r\n\r\nThis is the project my team and I made for the TAMUHack 2023. It was made to compete in the CBRE challenge of organizing teams given floor space and what teams like and dislike each other. It was made with pygame.\r\n\r\n## Demonstration\r\n\r\n[https://www.youtube.com/watch?v=7kwPxQyZSdU](https://www.youtube.com/watch?v=7kwPxQyZSdU)\r\n\r\n## Awards\r\n\r\n2nd place CBRE challenge\r\n",
         "images": [
-            "img21.png",
-            "img22.png",
-            "img23.png"
+            "img25.png",
+            "img26.png",
+            "img27.png"
         ],
         "github": "https://github.com/michael-manders/Hackathons/tree/main/TAMUHack",
         "category": "competition",
@@ -102,7 +116,7 @@
         "build": false,
         "about": "## About\n\nThis is some code that turn my cnc router into a tic tac toe robot. It uses a marker where the router bit would usally go to draw the board. Then by using a camera and computer vision it finds where you moved. After that, it decided what the optimal move would be and draws an X there.\n\n## Demonstration\n\n[https://youtu.be/qOsUDwOoCaU](https://youtu.be/qOsUDwOoCaU)\n",
         "images": [
-            "img24.png"
+            "img28.png"
         ],
         "github": "https://github.com/michael-manders/Tic-Tac-Toe",
         "category": "hardware"
@@ -112,14 +126,14 @@
         "build": false,
         "about": "An LED sign that is controlled over WifI\nComplete with a status LCD screen and control over a simple website\n\n## Demonstration\n\n[https://youtu.be/xXT149byX28](https://youtu.be/xXT149byX28)\n\n## Materials\n\n-   ESP32\n-   32x8\n-   5v Power Supply\n-   I<sup>2</sup>C LCD Screen\n-   10uf capacitor\n-   Breadboards\n\n## How to build\n\n1. Open the LED_Board.ino file in the [Arduino IDE](https://www.arduino.cc/en/software)\n2. Install the required libraries:\n    - ESP32 WiFi\n    - Adafruit_GFX\n    - Adafruit_NeoMatrix\n    - Adafruit_NeoPixel\n    - LiquidCrystal_I2C\n    - Wire\n3. Update the variables in LED_Board.ino\n\n```\nconst char *ssid = \"Wifi Name\";\nconst char *password = \"Password\";\n#define DATA_PIN 4\n#define LED_PIN 5\n#define MATRIX_WIDTH 32\n#define MATRIX_HEIGHT 8\n#define HOSTNAME \"LED-Sign\"\n#define PORT 80\n```\n\nI reccomend leaving the port the default because you won't have to type a port at the end ofthe url. The LED pin refers to the pin of a status led and the data pin refers to the pin that connects to the matrix.\n\n<br>\n\n4. Wire up the ESP32\n   List of connections: - Connect the EN pin to ground through a 10uf capacitor (not necessary but helps if you're having trouble uploading code) - Connect an LED to ground through a 220 ohm resister on the pin defined in your code - Connect the SDA and SCL pins on your LCD screen to the SDA and SCL pins on the ESP32 - Connect ground and 5v to the LED matrix, LCD and ESP32 (for the ESP32 I had to connect 5v through the usb instead of the pins. I'm unsure if this is the case for all models though.) - Connect data to the LED matrix on the pin define in the previous section - Connect up power to the power supply and connect the power supply to the breadboards\n\n<br>\n5. To make the box laser cut out all the svg files in the SVG folder. The file titled \"Electronics Box.svg\" contains all the parts in one file, while the other files split it up. After laser cutting slide the power carts, assemble all but one side. Put all the electronics in the box and attach the final side. I recommend doing this in a non-permanent way to avoid having the break the box to fix an issue. You can also glue the LED matrix to the backplate if you want it to be more rigid.\n   \n1. Finally put the lid on and you're done!\n\n## For Changing the HTMl\n\nTo update the web page design simply write out everything you want in the HTML file (make sure it is only the 1 file, not using external css or images). Then convert the html into 1 line (I did mine [here](https://www.textfixer.com/html/compress-html-compression.php)) then replace all the \" with '. Then replace the HTML line in the LED_Board.ino file.\n",
         "images": [
-            "img25.png",
-            "img26.png",
-            "img27.png",
-            "img28.png",
             "img29.png",
             "img30.png",
             "img31.png",
-            "img32.png"
+            "img32.png",
+            "img33.png",
+            "img34.png",
+            "img35.png",
+            "img36.png"
         ],
         "github": "https://github.com/michael-manders/WiFi-Controlled-LED-Sign",
         "category": "hardware"
