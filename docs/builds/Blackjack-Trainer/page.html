@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blackjack Trainer</title>
+        <link rel="stylesheet" href="page.css" />
+        <script src="page.js"></script>
+    </head>
+    <body onload="newHand(); updateStats()">
+        <div id="hands">
+            <div id="dealer"></div>
+            <div id="player"></div>
+        </div>
+        <div id="options">
+            <div class="option" onclick="select(1)">
+                <div class="text">Hit</div>
+                <div class="key">1</div>
+            </div>
+            <div class="option" onclick="select(2)">
+                <div class="text">Stand</div>
+                <div class="key">2</div>
+            </div>
+            <div class="option" onclick="select(3)">
+                <div class="text">Double Down</div>
+                <div class="key">3</div>
+            </div>
+            <div class="option" onclick="select(4)">
+                <div class="text">Split</div>
+                <div class="key">4</div>
+            </div>
+        </div>
+        <div id="stats">
+            <div id="totalCorrect">
+                <div class="label">Total correct</div>
+                <div class="value"></div>
+            </div>
+            <div id="total">
+                <div class="label">Total played</div>
+                <div class="value"></div>
+            </div>
+            <div id="percentCorrect">
+                <div class="label">Percent correct</div>
+                <div class="value"></div>
+            </div>
+            <div id="streak">
+                <div class="label">Streak</div>
+                <div class="value"></div>
+            </div>
+            <div id="reset" onclick="resetStats()">Reset</div>
+        </div>
+        <div id="cheatsheet">
+            <div id="hider">
+                <p><p>Hover to show cheatsheet</p></p>
+                <img src="./webimages/optimal.jpg" alt="" />
+            </div>
+        </div>
+        <div id="mistake">
+            <p>Incorrect</p>
+            <div id="correct">Correct play :</div>
+            <div id="dismiss" onclick="hideMistake()">
+                Dismiss (or press any key)
+            </div>
+        </div>
+    </body>
+</html>

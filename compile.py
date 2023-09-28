@@ -13,19 +13,19 @@ def compile():
     print('React code compiled successfully!')
 
     # copy ./ projects to ./build folder where the compiled react code is
-    shutil.copytree('./projects', './build/builds')
+    shutil.copytree('./projects', './docs/builds')
 
     # make a copy of the index.html as 404.html
-    shutil.copyfile('./build/index.html', './build/404.html')
+    shutil.copyfile('./docs/index.html', './docs/404.html')
 
     # remove all .md files from the folders in the ./build/builds folder
-    for root, dirs, files in os.walk('./build/builds'):
+    for root, dirs, files in os.walk('./docs/builds'):
         for file in files:
             if file.endswith('.md'):
                 os.remove(os.path.join(root, file))
 
     # make a file called CNAME in the ./build folder with "michaelmanders.com" in it
-    with open('./build/CNAME', 'w') as f:
+    with open('./docs/CNAME', 'w') as f:
         f.write('michaelmanders.com')
 
     print("Compile complete!")
