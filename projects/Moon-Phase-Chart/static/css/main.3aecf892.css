@@ -166,27 +166,28 @@ template {
     font-family: Rubik;
     font-weight: 400;
     src: local("Rubik"),
-        url(./static/media/Rubik-Regular.55fa11cdc8b9a3ee842f.ttf),
+        url(../../static/media/Rubik-Regular.55fa11cdc8b9a3ee842f.ttf),
         format("truetype");
 }
 @font-face {
     font-family: Rubik;
     font-weight: 700;
-    src: local("Rubik"), url(./static/media/Rubik-Bold.c934eb22c2c69992b34c.ttf),
+    src: local("Rubik"),
+        url(../../static/media/Rubik-Bold.c934eb22c2c69992b34c.ttf),
         format("truetype");
 }
 @font-face {
     font-family: Rubik;
     font-style: italic;
     src: local("Rubik"),
-        url(./static/media/Rubik-Italic.dd425b2765df0b853488.ttf),
+        url(../../static/media/Rubik-Italic.dd425b2765df0b853488.ttf),
         format("truetype");
 }
 @font-face {
     font-family: Rubik;
     font-weight: medium;
     src: local("Rubik"),
-        url(./static/media/Rubik-Medium.0e121b4fa4d6e9bc5c69.ttf),
+        url(../../static/media/Rubik-Medium.0e121b4fa4d6e9bc5c69.ttf),
         format("truetype");
 }
 #App {
