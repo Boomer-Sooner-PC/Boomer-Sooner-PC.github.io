@@ -6,7 +6,7 @@
         "static/media/Rubik-Medium.ttf": "./static/media/Rubik-Medium.0e121b4fa4d6e9bc5c69.ttf",
         "static/media/Rubik-Regular.ttf": "./static/media/Rubik-Regular.55fa11cdc8b9a3ee842f.ttf",
         "static/media/Rubik-Italic.ttf": "./static/media/Rubik-Italic.dd425b2765df0b853488.ttf",
-        "index.html": "./index.html",
+        "index.html": "./page.html",
         "main.3aecf892.css.map": "./static/css/main.3aecf892.css.map",
         "main.150cf121.js.map": "./static/js/main.150cf121.js.map"
     },
