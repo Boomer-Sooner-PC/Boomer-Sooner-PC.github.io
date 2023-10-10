@@ -3,7 +3,11 @@ import NavBar from "components/NavBar";
 import Background from "components/Background";
 import "../css/Home.css";
 
-import worldSVG from "../images/world.svg";
+import worldIMG from "../images/world.png";
+import Links from "components/Home/Links";
+import Contact from "components/Home/Contact";
+import FeaturedPhotos from "components/Home/FeaturedPhotos";
+import FeaturedProjects from "components/Home/FeaturedProjects";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -21,6 +25,10 @@ export default class Home extends React.Component {
         });
         this.updateOrbits();
         this.updateMoons();
+
+        // set planet to original position
+        document.getElementById("planet-images").style.transform =
+            "translateX(22%)";
     }
 
     componentWillUnmount() {
@@ -60,10 +68,7 @@ export default class Home extends React.Component {
             const planetImagesContainer =
                 document.getElementById("planet-images");
 
-            // Calculate the new translateX value based on scrollAmount
-            console.log(this.scrollAmount);
-
-            const translateX = -(this.scrollAmount / 360) * 50 + "%";
+            const translateX = -(this.scrollAmount / 360) * 50 + 22 + "%";
 
             // Apply the new translateX value to the container
             planetImagesContainer.style.transform = `translateX(${translateX})`;
@@ -109,13 +114,13 @@ export default class Home extends React.Component {
                     <div id="planet">
                         <div id="planet-images">
                             <img
-                                src={worldSVG}
+                                src={worldIMG}
                                 alt="world"
                                 className="planet-image"
                                 id="world-1"
                             />
                             <img
-                                src={worldSVG}
+                                src={worldIMG}
                                 alt="world"
                                 className="planet-image"
                                 id="world-2"
@@ -130,11 +135,38 @@ export default class Home extends React.Component {
                                 programming and astronomy.
                             </p>
                         </div>
-                        <div className="moon" id="moon-2"></div>
-                        <div className="moon" id="moon-3"></div>
-                        <div className="moon" id="moon-4"></div>
-                        <div className="moon" id="moon-5"></div>
-                        <div className="moon" id="moon-6"></div>
+                        <div className="moon" id="moon-2">
+                            <Links />
+                        </div>
+                        <div className="moon" id="moon-3">
+                            <Contact />
+                        </div>
+                        <div className="moon" id="moon-4">
+                            <FeaturedPhotos />
+                        </div>
+                        <div className="moon" id="moon-5">
+                            <FeaturedProjects />
+                        </div>
+
+                        <div className="moon" id="moon-1">
+                            <h1 id="title">Michael Manders</h1>
+                            <p>
+                                Hi! I'm a student in Texas with a passion for
+                                programming and astronomy.
+                            </p>
+                        </div>
+                        <div className="moon" id="moon-2">
+                            <Links />
+                        </div>
+                        <div className="moon" id="moon-3">
+                            <Contact />
+                        </div>
+                        <div className="moon" id="moon-4">
+                            <FeaturedPhotos />
+                        </div>
+                        <div className="moon" id="moon-5">
+                            <FeaturedProjects />
+                        </div>
                     </div>
                 </div>
                 <NavBar />

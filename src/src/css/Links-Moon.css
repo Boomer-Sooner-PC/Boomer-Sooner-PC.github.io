@@ -1,0 +1,62 @@
+#links-moon {
+    border-radius: 0;
+    border: 2px solid white;
+    width: 40vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#links-moon > #links {
+    font-size: 2.8rem;
+    margin: 5% 0 2% 0;
+}
+
+#links-moon > #links-container {
+    width: 90%;
+    height: 80%;
+    margin: 0 0 4% 0;
+    /* background-color: red; */
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "linka linkb"
+        "linkd linke";
+
+    align-items: center;
+    justify-content: center;
+}
+
+#links-container > .link {
+    margin: 10%;
+    width: 80%;
+    height: 80%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#links-container > .link:hover {
+    cursor: pointer;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+}
+
+.link:hover > img {
+    filter: grayscale(0.35) invert(0%);
+}
+
+#links-container > .link > .title {
+    font-size: 1.5rem;
+}
+
+#links-container > .link > img {
+    transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s;
+
+    width: 50%;
+    height: auto;
+}
