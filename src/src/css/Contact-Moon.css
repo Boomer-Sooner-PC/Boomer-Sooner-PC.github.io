@@ -1,7 +1,7 @@
 #contact {
     width: 45vw;
     height: 30vh;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     justify-content: center;
 }
 
@@ -31,15 +31,35 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     font-size: 1.3vw;
 }
 
 .contact > .icon {
     height: 50%;
     width: auto;
-    margin: 20% 3% 20% 5%;
+    margin: 0 3% 0 0;
 }
 
 .contact > .link {
     margin-left: 2%;
+}
+
+@media screen and (max-width: 600px) {
+    #contact {
+        width: 80vw;
+        height: 20vh;
+    }
+
+    .contact {
+        font-size: 4vw;
+    }
+
+    .contact > #text {
+        display: none;
+    }
+
+    #contact-header {
+        font-size: 2rem;
+    }
 }

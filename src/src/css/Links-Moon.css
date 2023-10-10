@@ -1,6 +1,6 @@
 #links-moon {
     border-radius: 0;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     width: 40vw;
     height: 60vh;
     display: flex;
@@ -15,16 +15,14 @@
 }
 
 #links-moon > #links-container {
-    width: 90%;
-    height: 80%;
+    width: 80%;
+    height: 50%;
     margin: 0 0 4% 0;
     /* background-color: red; */
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "linka linkb"
-        "linkd linke";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "linka linkb linka linkb";
 
     align-items: center;
     justify-content: center;
@@ -57,6 +55,17 @@
 #links-container > .link > img {
     transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s;
 
-    width: 50%;
+    width: 90%;
     height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    #links-moon {
+        width: 80vw;
+        height: 35vh;
+    }
+
+    #links-moon > #links {
+        font-size: 2rem;
+    }
 }

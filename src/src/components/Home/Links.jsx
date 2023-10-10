@@ -29,25 +29,25 @@ export default class Links extends React.Component {
                         className="link"
                         data-link="https://github.com/michael-manders">
                         <img src={github} alt="GitHub Logo" />
-                        <div className="title">GitHub</div>
+                        {/* <div className="title">GitHub</div> */}
                     </div>
                     <div
                         className="link"
                         data-link="https://www.instagram.com/fuelratting/">
                         <img src={instagram} alt="Instagram Logo" />
-                        <div className="title">Instagram</div>
+                        {/* <div className="title">Instagram</div> */}
                     </div>
                     <div
                         className="link"
                         data-link="https://www.astrobin.com/users/FuelRatting/">
                         <img src={astrobin} alt="AstroBin logo" />
-                        <div className="title">AstroBin</div>
+                        {/* <div className="title">AstroBin</div> */}
                     </div>
                     <div
                         className="link"
                         data-link="https://www.youtube.com/channel/UCUkJ0Vb41W4-Sm-N211CctA">
                         <img src={youtube} alt="YouTube Logo" />
-                        <div className="title">YouTube</div>
+                        {/* <div className="title">YouTube</div> */}
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 #featured-photos {
     width: 70vw;
     height: 60vh;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,4 +56,16 @@
 
 #featured-photos > p > a {
     margin-left: 1%;
+}
+
+@media screen and (max-width: 600px) {
+    #featured-photos {
+        width: 75vw;
+        height: 30vh;
+    }
+
+    #title {
+        font-size: 2rem;
+        margin-bottom: 5%;
+    }
 }

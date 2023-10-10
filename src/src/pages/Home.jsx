@@ -29,6 +29,18 @@ export default class Home extends React.Component {
         // set planet to original position
         document.getElementById("planet-images").style.transform =
             "translateX(22%)";
+
+        if (window.innerWidth < 600) {
+            setTimeout(this.deviceMobile, 50);
+        }
+    }
+
+    deviceMobile() {
+        let dupes = document.querySelectorAll(".dupes");
+        for (let dupe of dupes) {
+            console.log(dupe);
+            dupe.remove();
+        }
     }
 
     componentWillUnmount() {
@@ -148,23 +160,23 @@ export default class Home extends React.Component {
                             <FeaturedProjects />
                         </div>
 
-                        <div className="moon" id="moon-1">
+                        <div className="moon dupes" id="moon-1">
                             <h1 id="title">Michael Manders</h1>
                             <p>
                                 Hi! I'm a student in Texas with a passion for
                                 programming and astronomy.
                             </p>
                         </div>
-                        <div className="moon" id="moon-2">
+                        <div className="moon dupes" id="moon-2">
                             <Links />
                         </div>
-                        <div className="moon" id="moon-3">
+                        <div className="moon dupes" id="moon-3">
                             <Contact />
                         </div>
-                        <div className="moon" id="moon-4">
+                        <div className="moon dupes" id="moon-4">
                             <FeaturedPhotos />
                         </div>
-                        <div className="moon" id="moon-5">
+                        <div className="moon dupes" id="moon-5">
                             <FeaturedProjects />
                         </div>
                     </div>
