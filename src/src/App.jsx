@@ -5,6 +5,7 @@ import About from "pages/About";
 import Astrophotography from "pages/Astrophotography";
 import Projects from "pages/ProjectsRouter";
 import SecretRouter from "pages/hidden/SecretRouter";
+import CryLog from "pages/hidden/CryLog";
 
 function App() {
     return (
@@ -20,7 +21,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="*" element={<h1>404</h1>} />
                 {/* if contains hidden redirect to hidden router */}
-                <Route path="/hidden/*" element={<SecretRouter />} />
+                <Route path="/hidden/crylog" element={<CryLog />} />
+                <Route path="/hidden" element={<SecretRouter />} />
             </Routes>
         </Router>
     );
