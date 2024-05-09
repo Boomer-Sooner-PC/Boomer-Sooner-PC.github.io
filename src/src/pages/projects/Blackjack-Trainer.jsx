@@ -16,7 +16,7 @@ let markdown = `## About
 
 This is a tool for helping learn the optimal blackjack strategy. It presents you with your hand of 2 cards and the dealer hand of 1 visible and 1 hidden card. You must choose which is the optimal move to make out of hitting, standing, doubling down, or splitting. If you get it correct it updates the stats, and if you get it incorrect it tells you the correct answer and updates the stats.
 `;
-let imagesNames = ["img0.png","img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png","img9.png","img10.png","img11.png","img12.png","img13.png","img14.png","img15.png","img16.png","img17.png","img18.png","img19.png","img20.png","img21.png","img22.png","img23.png","img24.png","img25.png","img26.png","img27.png","img28.png","img29.png","img30.png","img31.png","img32.png","img33.png","img34.png","img35.png","img36.png","img37.png","img38.png"];
+let imagesNames = ["img0.png","img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png","img9.png","img10.png","img11.png","img12.png","img13.png","img14.png","img15.png","img16.png","img17.png","img18.png","img19.png","img20.png","img21.png","img22.png","img23.png","img24.png","img25.png","img26.png","img27.png","img28.png","img29.png","img30.png","img31.png","img32.png","img33.png","img34.png","img35.png","img36.png","img37.png","img38.png","img39.png"];
 
 function importAll(r) {
     return r.keys().map(r);
