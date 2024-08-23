@@ -93,7 +93,7 @@ function checkWin(board) {
     for (let i = 0; i < 5; i++) {
         if (board[i].every((num) => num < 0)) {
             win = true;
-            type = "row";
+            type = "column";
         }
     }
 
@@ -105,7 +105,7 @@ function checkWin(board) {
         }
         if (column.every((num) => num < 0)) {
             win = true;
-            type = "column";
+            type = "row";
         }
     }
 
