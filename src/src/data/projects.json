@@ -1,7 +1,7 @@
 {
     "Bingo-Paradox-Sim": {
         "name": "Bingo-Paradox-Sim",
-        "build": false,
+        "build": true,
         "about": "## About\r\n\r\nThis is a simulation of bingo games. Inspired by Matt Parkers video. [View here](https://www.youtube.com/watch?v=AHP1T8fTxpQ)\r\n",
         "images": [
             "img0.png"
