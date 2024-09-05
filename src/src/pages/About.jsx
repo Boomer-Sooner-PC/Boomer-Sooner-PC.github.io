@@ -1,15 +1,18 @@
 import React from "react";
-import Navbar from "components/NavBar";
-import Background from "components/Background";
+import PageWrapper from "components/PageWrapper";
+
+import AnimatedText from "components/AnimatedText";
+
+import "../css/About.css";
 
 export default class About extends React.Component {
     render() {
         return (
-            <div className="about">
-                <Navbar />
-                <Background />
-                <h1>About</h1>
-            </div>
+            <PageWrapper animation={true}>
+                <AnimatedText dropdown="true" hover="true" id="about-title">
+                    Jennifer Rayman is AWESOME!!!
+                </AnimatedText>
+            </PageWrapper>
         );
     }
 }

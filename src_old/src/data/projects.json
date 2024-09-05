@@ -1,0 +1,170 @@
+{
+    "Bingo-Paradox-Sim": {
+        "name": "Bingo-Paradox-Sim",
+        "build": true,
+        "about": "## About\r\n\r\nThis is a simulation of bingo games. Inspired by Matt Parkers video. [View here](https://www.youtube.com/watch?v=AHP1T8fTxpQ)\r\n",
+        "images": [
+            "img0.png"
+        ],
+        "category": "software"
+    },
+    "Blackjack-Trainer": {
+        "name": "Blackjack-Trainer",
+        "build": true,
+        "about": "## About\r\n\r\nThis is a tool for helping learn the optimal blackjack strategy. It presents you with your hand of 2 cards and the dealer hand of 1 visible and 1 hidden card. You must choose which is the optimal move to make out of hitting, standing, doubling down, or splitting. If you get it correct it updates the stats, and if you get it incorrect it tells you the correct answer and updates the stats.\r\n",
+        "images": [
+            "img1.png",
+            "img2.png",
+            "img3.png"
+        ],
+        "github": "https://github.com/michael-manders/blackjack-trainer",
+        "category": "software"
+    },
+    "boids": {
+        "name": "boids",
+        "build": true,
+        "about": "## About\r\n\r\nQuick and simple boids simulation following the 3 rules to describe boid behavior.\r\n",
+        "images": [
+            "img4.png"
+        ],
+        "category": "software"
+    },
+    "Carbon-Consulting--HackDFW2022": {
+        "name": "Carbon-Consulting--HackDFW2022",
+        "build": false,
+        "about": "## About\r\n\r\nThis is the project my team and I made for HackDFW2022. This was the first Hackathon I have ever competed at.\r\nSee [devpost](https://devpost.com/software/common-carbon) for more details\r\n\r\n## Awards\r\n\r\nnone :(\r\n",
+        "images": [
+            "img5.png",
+            "img6.png"
+        ],
+        "github": "https://github.com/michael-manders/Hackathons/tree/main/HackDFW",
+        "category": "competition",
+        "devpost": "https://devpost.com/software/common-carbon"
+    },
+    "correlations-in-allrecipes": {
+        "name": "correlations-in-allrecipes",
+        "build": true,
+        "about": "## Explanation\r\n\r\nThis is a tool to visualize the correlations between ingredients in the AllRecipes database. I was inspired to make this by [this](https://www.reddit.com/r/dataisbeautiful/comments/wuzidf/oc_correlation_between_spices_shared_in_recipes/) Reddit post. It generates a correlation matrix between the selected ingredients and then displays it as a heatmap. The color of each cell represents the correlation factor between the two ingredients.\r\n\r\n## How it was made\r\n\r\nI first took the dataset from this [internet archive](https://archive.org/details/allrecipes.com_recipes_12042020000000) that contains about 71,000 recipes scraped from AllRecipes. And wrote a python script that parsed the dataset and loaded it into a json file that contains only the relevant information (recipe name, ingredients, category, rating).\r\nThen I downloaded [a text file](https://github.com/schollz/food-identicon/blob/master/ingredients.txt) containing a list of bunch of ingredients. However that list contained a lot of junk items (like ingredients that contained measurements), so I make another python script that removed those items.\r\nThe recipes dataset's ingredients were written like \"1 cup of flour\", so I needed to just isolate the ingredient's name. I found a [python library](https://pypi.org/project/ingredient-parser-nlp/) that could do that, but it wasn't perfect. So after running the ingredients through that, the python script looks through the list of ingredients, and the largest item from that list that is a substring of the ingredient, becomes the ingredient. After running this I had a list of recipes, and their ingredients.\r\nTo calculate the correlation matrix, I wrote a javascript function (so it could be hosted on a static website) that takes in a list of ingredients, and a category (if you want to only look at a certain category of recipes), and then calculates the correlation matrix.\r\nThen I wrote a javascript function that takes in the correlation matrix, and generates an image that represents it.\r\nFinally I wrote this webpage to display the image, and allow the user to select the ingredients they want to analyze.\r\n\r\n## Limitations\r\n\r\nThe dataset is not perfect, and there are some issues I could see with it. The primary issue is that the data is fairly western focused, so the correlations will reflect that.\r\n",
+        "images": [
+            "img7.png",
+            "img8.png"
+        ],
+        "github": "https://github.com/michael-manders/correlation-in-allrecipes-database",
+        "category": "software"
+    },
+    "Educators-Exchange--RISDxACM-Hackathon": {
+        "name": "Educators-Exchange--RISDxACM-Hackathon",
+        "build": false,
+        "about": "## About\r\n\r\nThis the project my team and I made for the RISDxACM Hackathon. To see more about what this project is and does see the [presentation ](https://www.canva.com/design/DAFgMEpXxCk/Kbt3wO8tUcUscoqTaEG0yg/edit?utm_content=DAFgMEpXxCk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)we made.\r\n\r\n## Awards\r\n\r\n1st place advanced division\r\n",
+        "images": [
+            "img9.png",
+            "img10.png",
+            "img11.png",
+            "img12.png"
+        ],
+        "github": "https://github.com/michael-manders/Hackathons/tree/main/RISDxACM%20Hackathon",
+        "category": "competition"
+    },
+    "Moon-Phase-Chart": {
+        "name": "Moon-Phase-Chart",
+        "build": true,
+        "about": "## About\r\n\r\nThis is a moon phase chart I built to help me plan out astro-imaging nights. It provides the moon phase, moon rise and set time, and the astro dark start and end time. This is useful so you can see how much of the night is moon-free.\r\n\r\nIt will get your location, or you can enter manually, and you select the dates, and it will calculate for that month.\r\n\r\n## Credits\r\n\r\nI pretty much just copied the code from [this site](http://hinch.me.uk/riset.html#twig03a) to perform the calculations for the site.\r\n",
+        "images": [
+            "img13.png",
+            "img14.png"
+        ],
+        "github": "https://github.com/michael-manders/moon-phase-chart",
+        "category": "software"
+    },
+    "Oak-Operations--HackSMU2023": {
+        "name": "Oak-Operations--HackSMU2023",
+        "build": false,
+        "about": "## About\r\n\r\nThis is my team's project made for HackSMU and specifically the CBRE Challenge. Check out the [YouTube](https://youtu.be/M10nQZ4L8gM?si=Fvrnjsj2Xstf7NAx), Devpost and GitHub for more details.\r\n\r\n## Awards\r\n\r\n2nd place CBRE challenge\r\n\r\nBest use of Google Cloud\r\n",
+        "images": [
+            "img15.png",
+            "img16.png",
+            "img17.png",
+            "img18.png"
+        ],
+        "github": "https://github.com/michael-manders/Hackathons/tree/main/HackSMU",
+        "devpost": "https://devpost.com/software/oak-operations?ref_content=my-projects-tab&ref_feature=my_projects",
+        "category": "competition"
+    },
+    "one-pizza-team-calculator": {
+        "name": "one-pizza-team-calculator",
+        "build": true,
+        "about": "## About\r\n\r\nThis is a tool that calculates the size of a single pizza needed to feed a team thereby making it a one pizza team. It uses three.js to visualize the pizza and the scales. It is intentially designed to look bad.\r\n",
+        "images": [
+            "img19.png",
+            "img20.png"
+        ],
+        "github": "https://github.com/michael-manders/One-Pizza-Team-Calculator",
+        "category": "software"
+    },
+    "ranked-choice-voting-website": {
+        "name": "ranked-choice-voting-website",
+        "build": false,
+        "about": "## About\n\nThis is a website similar to Menti.com but instead of first past the post it uses ranked choice voting to calculate the winner.\n\n## Start\n\nTo run this locally simply install Node.js on your computer, open the directory in a terminal and type `node .`\n",
+        "images": [
+            "img21.png",
+            "img22.png",
+            "img23.png",
+            "img24.png"
+        ],
+        "github": "https://github.com/michael-manders/RCV-Polling-Website",
+        "category": "software"
+    },
+    "school-points-system": {
+        "name": "school-points-system",
+        "build": false,
+        "about": "## About\r\n\r\nThis is a project I built for a teacher a few years ago to easily be able to give points to students given the period and desk they sit at. It was mainly a way for me to learn nodejs, html, and css.\r\n\r\nIt has a student portal where student can select their class period and see how many points they have. It also has a teacher portal which requires a password. In that portal the teacher can give and take points as well as edit names for each class period.\r\n\r\n## Running\r\n\r\n1. run `npm install`\r\n2. run `node .`\r\n",
+        "images": [
+            "img25.png",
+            "img26.png",
+            "img27.png",
+            "img28.png"
+        ],
+        "github": "https://github.com/michael-manders/school-money-system/tree/main",
+        "category": "software"
+    },
+    "SquirrelSpace--TAMUHack2023": {
+        "name": "SquirrelSpace--TAMUHack2023",
+        "build": false,
+        "about": "## About\r\n\r\nThis is the project my team and I made for the TAMUHack 2023. It was made to compete in the CBRE challenge of organizing teams given floor space and what teams like and dislike each other. It was made with pygame.\r\n\r\n## Demonstration\r\n\r\n[https://www.youtube.com/watch?v=7kwPxQyZSdU](https://www.youtube.com/watch?v=7kwPxQyZSdU)\r\n\r\n## Awards\r\n\r\n2nd place CBRE challenge\r\n",
+        "images": [
+            "img29.png",
+            "img30.png",
+            "img31.png"
+        ],
+        "github": "https://github.com/michael-manders/Hackathons/tree/main/TAMUHack",
+        "category": "competition",
+        "devpost": "https://devpost.com/software/michael-manders-big-fun-time"
+    },
+    "tic-tac-toe-robot": {
+        "name": "tic-tac-toe-robot",
+        "build": false,
+        "about": "## About\n\nThis is some code that turn my cnc router into a tic tac toe robot. It uses a marker where the router bit would usally go to draw the board. Then by using a camera and computer vision it finds where you moved. After that, it decided what the optimal move would be and draws an X there.\n\n## Demonstration\n\n[https://youtu.be/qOsUDwOoCaU](https://youtu.be/qOsUDwOoCaU)\n",
+        "images": [
+            "img32.png"
+        ],
+        "github": "https://github.com/michael-manders/Tic-Tac-Toe",
+        "category": "hardware"
+    },
+    "WiFi-Controlled-LED-Sign": {
+        "name": "WiFi-Controlled-LED-Sign",
+        "build": false,
+        "about": "An LED sign that is controlled over WifI\nComplete with a status LCD screen and control over a simple website\n\n## Demonstration\n\n[https://youtu.be/xXT149byX28](https://youtu.be/xXT149byX28)\n\n## Materials\n\n-   ESP32\n-   32x8\n-   5v Power Supply\n-   I<sup>2</sup>C LCD Screen\n-   10uf capacitor\n-   Breadboards\n\n## How to build\n\n1. Open the LED_Board.ino file in the [Arduino IDE](https://www.arduino.cc/en/software)\n2. Install the required libraries:\n    - ESP32 WiFi\n    - Adafruit_GFX\n    - Adafruit_NeoMatrix\n    - Adafruit_NeoPixel\n    - LiquidCrystal_I2C\n    - Wire\n3. Update the variables in LED_Board.ino\n\n```\nconst char *ssid = \"Wifi Name\";\nconst char *password = \"Password\";\n#define DATA_PIN 4\n#define LED_PIN 5\n#define MATRIX_WIDTH 32\n#define MATRIX_HEIGHT 8\n#define HOSTNAME \"LED-Sign\"\n#define PORT 80\n```\n\nI reccomend leaving the port the default because you won't have to type a port at the end ofthe url. The LED pin refers to the pin of a status led and the data pin refers to the pin that connects to the matrix.\n\n<br>\n\n4. Wire up the ESP32\n   List of connections: - Connect the EN pin to ground through a 10uf capacitor (not necessary but helps if you're having trouble uploading code) - Connect an LED to ground through a 220 ohm resister on the pin defined in your code - Connect the SDA and SCL pins on your LCD screen to the SDA and SCL pins on the ESP32 - Connect ground and 5v to the LED matrix, LCD and ESP32 (for the ESP32 I had to connect 5v through the usb instead of the pins. I'm unsure if this is the case for all models though.) - Connect data to the LED matrix on the pin define in the previous section - Connect up power to the power supply and connect the power supply to the breadboards\n\n<br>\n5. To make the box laser cut out all the svg files in the SVG folder. The file titled \"Electronics Box.svg\" contains all the parts in one file, while the other files split it up. After laser cutting slide the power carts, assemble all but one side. Put all the electronics in the box and attach the final side. I recommend doing this in a non-permanent way to avoid having the break the box to fix an issue. You can also glue the LED matrix to the backplate if you want it to be more rigid.\n   \n1. Finally put the lid on and you're done!\n\n## For Changing the HTMl\n\nTo update the web page design simply write out everything you want in the HTML file (make sure it is only the 1 file, not using external css or images). Then convert the html into 1 line (I did mine [here](https://www.textfixer.com/html/compress-html-compression.php)) then replace all the \" with '. Then replace the HTML line in the LED_Board.ino file.\n",
+        "images": [
+            "img33.png",
+            "img34.png",
+            "img35.png",
+            "img36.png",
+            "img37.png",
+            "img38.png",
+            "img39.png",
+            "img40.png"
+        ],
+        "github": "https://github.com/michael-manders/WiFi-Controlled-LED-Sign",
+        "category": "hardware"
+    }
+}

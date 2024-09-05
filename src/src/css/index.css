@@ -1,13 +1,35 @@
+@font-face {
+    font-family: "NanumGothic";
+    src: local("NanumGothic"),
+        url(../fonts/NanumGothicCoding-Regular.ttf) format("truetype");
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+    font-family: "TitleText";
+    src: local("NK57 Monospace Sc Lt"),
+        /* url(../fonts/nk47-monospace/NK57\ Monospace\ Sc\ Lt.otf) */url(../fonts/SourceCodePro-Light.ttf)
+            format("truetype");
+}
+
+@font-face {
+    font-family: "NormalText";
+    src: local("NK57 Monospace No Rg"),
+        url(../fonts/nk47-monospace/NK57\ Monospace\ No\ Rg.otf),
+        format("truetype");
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    /* font-family: "Times New Roman", Times, serif, "NanumGothic", serif; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }

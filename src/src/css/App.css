@@ -1,17 +1,42 @@
 :root {
     /* Define the color scheme */
-    --primary-color: #313131d6;
-    --secondary-color: #2f2f2f9c;
+    --primary-color: #c7c9ca;
+    --secondary-color: #2c2b29;
     --accent: #dc82f8;
-    --text-primary: #ebebeb;
+    --text-primary: #1c1b1a;
     --text-secondary: #aaaaaa;
 }
 
 body {
-    font-family: monospace;
     color: var(--text-primary);
+    font-family: "TitleText", sans-serif, monospace;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 iframe {
     display: none;
+}
+
+#background-container {
+    position: absolute !important;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-color);
+    z-index: -1;
+    overflow: hidden;
+}
+
+:root {
+    --border-padding: 4vw;
+    --navbar-height: 3vh;
+}
+
+#animation-container {
+    width: calc(100vw - var(--border-padding));
+    height: calc(100vh - var(--border-padding) - var(--navbar-height));
+    margin-left: calc(var(--border-padding) / 2);
+    margin-top: calc(var(--border-padding) / 2 + var(--navbar-height));
+    border: 0.1vw solid var(--secondary-color);
 }

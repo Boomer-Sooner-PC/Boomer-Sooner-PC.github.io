@@ -1,0 +1,55 @@
+#PageWrapper {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: ; */
+}
+
+#navbar-container {
+    position: absolute;
+    /* background-color: rgba(0, 255, 255, 0.407); */
+    width: calc(100vw - var(--border-padding));
+    height: calc(var(--navbar-height) + var(--border-padding) / 2);
+    margin-left: calc(var(--border-padding) / 2);
+    /* margin-top: calc(var(--border-padding) / 4); */
+}
+#content-container {
+    position: absolute;
+    /* background-color: rgba(0, 128, 0, 0.278); */
+    width: calc(100vw - var(--border-padding));
+    height: calc(100vh - var(--border-padding) - var(--navbar-height));
+    margin-left: calc(var(--border-padding) / 2);
+    margin-top: calc(var(--border-padding) / 2 + var(--navbar-height));
+}
+
+#navbar-element {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 2.4vh;
+    margin-left: 1vw;
+}
+
+.active {
+    font-weight: 1000;
+}
+
+.fade-out {
+    animation-name: fade-out;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

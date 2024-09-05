@@ -1,0 +1,20 @@
+.animated-text {
+    display: flex;
+    flex-direction: row;
+}
+
+.animated-text-drop-active {
+    animation-name: slide-in;
+    animation-duration: 0.25s;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
