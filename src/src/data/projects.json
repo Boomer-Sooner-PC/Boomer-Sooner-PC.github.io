@@ -150,19 +150,29 @@
         "github": "https://github.com/michael-manders/Tic-Tac-Toe",
         "category": "hardware"
     },
+    "Time-Tracking-Renderer": {
+        "name": "Time-Tracking-Renderer",
+        "build": true,
+        "about": "",
+        "images": [
+            "img33.png"
+        ],
+        "github": "https://github.com/michael-manders/time-tracking-renderer",
+        "category": "software"
+    },
     "WiFi-Controlled-LED-Sign": {
         "name": "WiFi-Controlled-LED-Sign",
         "build": false,
         "about": "An LED sign that is controlled over WifI\nComplete with a status LCD screen and control over a simple website\n\n## Demonstration\n\n[https://youtu.be/xXT149byX28](https://youtu.be/xXT149byX28)\n\n## Materials\n\n-   ESP32\n-   32x8\n-   5v Power Supply\n-   I<sup>2</sup>C LCD Screen\n-   10uf capacitor\n-   Breadboards\n\n## How to build\n\n1. Open the LED_Board.ino file in the [Arduino IDE](https://www.arduino.cc/en/software)\n2. Install the required libraries:\n    - ESP32 WiFi\n    - Adafruit_GFX\n    - Adafruit_NeoMatrix\n    - Adafruit_NeoPixel\n    - LiquidCrystal_I2C\n    - Wire\n3. Update the variables in LED_Board.ino\n\n```\nconst char *ssid = \"Wifi Name\";\nconst char *password = \"Password\";\n#define DATA_PIN 4\n#define LED_PIN 5\n#define MATRIX_WIDTH 32\n#define MATRIX_HEIGHT 8\n#define HOSTNAME \"LED-Sign\"\n#define PORT 80\n```\n\nI reccomend leaving the port the default because you won't have to type a port at the end ofthe url. The LED pin refers to the pin of a status led and the data pin refers to the pin that connects to the matrix.\n\n<br>\n\n4. Wire up the ESP32\n   List of connections: - Connect the EN pin to ground through a 10uf capacitor (not necessary but helps if you're having trouble uploading code) - Connect an LED to ground through a 220 ohm resister on the pin defined in your code - Connect the SDA and SCL pins on your LCD screen to the SDA and SCL pins on the ESP32 - Connect ground and 5v to the LED matrix, LCD and ESP32 (for the ESP32 I had to connect 5v through the usb instead of the pins. I'm unsure if this is the case for all models though.) - Connect data to the LED matrix on the pin define in the previous section - Connect up power to the power supply and connect the power supply to the breadboards\n\n<br>\n5. To make the box laser cut out all the svg files in the SVG folder. The file titled \"Electronics Box.svg\" contains all the parts in one file, while the other files split it up. After laser cutting slide the power carts, assemble all but one side. Put all the electronics in the box and attach the final side. I recommend doing this in a non-permanent way to avoid having the break the box to fix an issue. You can also glue the LED matrix to the backplate if you want it to be more rigid.\n   \n1. Finally put the lid on and you're done!\n\n## For Changing the HTMl\n\nTo update the web page design simply write out everything you want in the HTML file (make sure it is only the 1 file, not using external css or images). Then convert the html into 1 line (I did mine [here](https://www.textfixer.com/html/compress-html-compression.php)) then replace all the \" with '. Then replace the HTML line in the LED_Board.ino file.\n",
         "images": [
-            "img33.png",
             "img34.png",
             "img35.png",
             "img36.png",
             "img37.png",
             "img38.png",
             "img39.png",
-            "img40.png"
+            "img40.png",
+            "img41.png"
         ],
         "github": "https://github.com/michael-manders/WiFi-Controlled-LED-Sign",
         "category": "hardware"

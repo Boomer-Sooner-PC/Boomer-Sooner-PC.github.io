@@ -16,6 +16,7 @@ import RANKEDCHOICEVOTINGWEBSITE from "../pages/projects/ranked-choice-voting-we
 import SCHOOLPOINTSSYSTEM from "../pages/projects/school-points-system";
 import SQUIRRELSPACETAMUHACK2023 from "../pages/projects/SquirrelSpace--TAMUHack2023";
 import TICTACTOEROBOT from "../pages/projects/tic-tac-toe-robot";
+import TIMETRACKINGRENDERER from "../pages/projects/Time-Tracking-Renderer";
 import WIFICONTROLLEDLEDSIGN from "../pages/projects/WiFi-Controlled-LED-Sign";
 // end import
 
@@ -35,6 +36,7 @@ export default class SecretRouter extends React.Component {
 <Route path="/school-points-system" element={<SCHOOLPOINTSSYSTEM />} />
 <Route path="/SquirrelSpace--TAMUHack2023" element={<SQUIRRELSPACETAMUHACK2023 />} />
 <Route path="/tic-tac-toe-robot" element={<TICTACTOEROBOT />} />
+<Route path="/Time-Tracking-Renderer" element={<TIMETRACKINGRENDERER />} />
 <Route path="/WiFi-Controlled-LED-Sign" element={<WIFICONTROLLEDLEDSIGN />} />
 
     <Route path="*" element={<ProjectHome />} />

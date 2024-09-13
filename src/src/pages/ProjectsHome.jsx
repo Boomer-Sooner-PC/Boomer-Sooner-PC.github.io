@@ -21,6 +21,7 @@ export default class ProjectHome extends React.Component {
 <div className="project one-pizza-team-calculator"><a href="/projects/one-pizza-team-calculator"><h3>One Pizza Team Calculator</h3></a></div>
 <div className="project ranked-choice-voting-website"><a href="/projects/ranked-choice-voting-website"><h3>Ranked Choice Voting Website</h3></a></div>
 <div className="project school-points-system"><a href="/projects/school-points-system"><h3>School Points System</h3></a></div>
+<div className="project Time-Tracking-Renderer"><a href="/projects/Time-Tracking-Renderer"><h3>Time Tracking Renderer</h3></a></div>
 </div>
                 <h1>Hardware</h1>
                 <div className="hardware-projects">
