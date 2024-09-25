@@ -157,7 +157,7 @@ export default class BackgroundAnimation extends React.Component {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         this.points.forEach((point) => {
-            ctx.fillStyle = `rgba(44, 43, 41, ${255})`;
+            ctx.fillStyle = `rgba(233, 234, 235, ${255})`;
             // ctx.fillRect(point.x, point.y, 5, 5);
         });
 
@@ -173,7 +173,7 @@ export default class BackgroundAnimation extends React.Component {
                     ctx.moveTo(point.x, point.y);
                     ctx.lineTo(point2.x, point2.y);
                     let value = this.lineSmoothing(distance);
-                    ctx.strokeStyle = `rgba(44, 43, 41, ${value / 255 / 5})`;
+                    ctx.strokeStyle = `rgba(233, 234, 235, ${value / 255 / 5})`;
                     ctx.stroke();
                 }
             });

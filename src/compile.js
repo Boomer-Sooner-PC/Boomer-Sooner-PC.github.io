@@ -1,161 +1,87 @@
 const fs = require("fs");
+const showdown = require("showdown");
+
+const PROJECT_HOME_PATH = "./src/pages/ProjectsHome.jsx";
+const IMAGE_DIR = "./src/images/projectImages/";
 
 let projectsPath = "../projects/";
 let projects = fs.readdirSync(projectsPath);
 
-let photoIndex = 0;
+// make the project list for the project home folder
+// gets the name, description, category, and if it's featured
+let projectList = [];
+let imagesList = [];
+let imageIndex = 0;
 
-let projectsData = {};
-for (let project of projects) {
-    let path = projectsPath + project + "/";
+// empty images directory
+fs.readdirSync(IMAGE_DIR).forEach((file) => {
+    fs.unlinkSync(IMAGE_DIR + file);
+});
 
-    let data = {};
+projects.forEach((project) => {
+    let json = JSON.parse(
+        fs.readFileSync(projectsPath + project + "/data.json")
+    );
 
-    // read the data from data.json inside the folder
-    try {
-        let fileData = JSON.parse(fs.readFileSync(path + "data.json", "utf8"));
-        data = {
-            name: project,
-            build: fs.existsSync(path + "page.html"),
-            about: fs.readFileSync(path + "README.md", "utf8"),
-            images: [],
-        };
-
-        // add everything from data.json to the data object
-        for (let key in fileData) {
-            data[key] = fileData[key];
-        }
-    } catch (e) {
-        data = {
-            name: project,
-            build: fs.existsSync(path + "page.html"),
-            about: fs.readFileSync(path + "README.md", "utf8"),
-            images: [],
-        };
+    let obj = {
+        title: project.replace(/-/g, " "),
+        description: json.description,
+        category: json.category,
+        github: json.github,
+        devpost: json.devpost,
+    };
+    if (json.featured) {
+        obj.featured = true;
+    } else {
+        obj.featured = false;
     }
-    // images in folder
-    let images = fs.readdirSync(path + "images/");
 
-    for (let image of images) {
-        data.images.push(`img${photoIndex}.png`);
+    obj.images = [];
+
+    let files = fs.readdirSync(projectsPath + project);
+    let images = fs.readdirSync(projectsPath + project + "/images");
+
+    images.forEach((image) => {
+        let newName = `projImg${imageIndex++}.${image.split(".")[1]}`;
+        imagesList.push(newName);
         fs.copyFileSync(
-            path + "images/" + image,
-            `src/images/projectImages/img${photoIndex}.png`
+            projectsPath + project + "/images/" + image,
+            IMAGE_DIR + newName
         );
-        photoIndex++;
+
+        obj.images.push(newName);
+    });
+
+    // if there is a page.html then it is a project with a deployment.
+    if (files.includes("page.html")) {
+        obj.deployed = `https://michaelmanders.com/builds/${project}/page.html`;
+    } else {
+        obj.deployed = false;
     }
 
-    projectsData[project] = data;
-}
+    projectList.push(obj);
 
-// write the data to the json file
-fs.writeFileSync(
-    "src/data/projects.json",
-    JSON.stringify(projectsData, null, 4)
-);
-
-let imageArray = [];
-for (let i = 0; i < photoIndex; i++) {
-    imageArray.push(`img${i}.png`);
-}
-
-const template = fs.readFileSync("src/data/projectTemplate.jsx", "utf8");
-
-for (let dat of Object.keys(projectsData)) {
-    let data = projectsData[dat];
-
-    let page = template;
-
-    page = page.replace(
-        /<ProjectNameSplit>/g,
-        `${data.name.replace(/-/g, "")}`
+    // now do the markdown thing
+    let converter = new showdown.Converter();
+    let html = converter.makeHtml(
+        fs.readFileSync(projectsPath + project + "/README.md", "utf8")
     );
-    page = page.replace(/<ProjectName>/g, `${data.name}`);
-    page = page.replace(
-        /<Markdown>/g,
-        `\`${data.about.replace(/`/g, "\\`")}\``
-    );
-    page = page.replace(/<Images>/g, `${JSON.stringify(imageArray)}`);
 
-    fs.writeFileSync(`src/pages/projects/${data.name}.jsx`, page);
-}
+    obj.info = html;
+});
 
-// make the router file
-let routerTemplate = fs.readFileSync(
-    "src/data/projectsRouterTemplate.jsx",
-    "utf8"
-);
+// write that list to the project home file
+let file = fs.readFileSync(PROJECT_HOME_PATH, "utf8");
 
-let importString = "";
-let routeString = "";
+let startIndex =
+    file.indexOf("//<project-list-start>//") +
+    "//<project-list-start>//".length;
+let endIndex = file.indexOf("//<project-list-end>//");
 
-for (let dat of Object.keys(projectsData)) {
-    let data = projectsData[dat];
+let start = file.slice(0, startIndex);
+let end = file.slice(endIndex);
 
-    importString += `import ${data.name
-        .replace(/-/g, "")
-        .toUpperCase()} from "../pages/projects/${data.name}";\n`;
-    routeString += `<Route path="/${data.name}" element={<${data.name
-        .replace(/-/g, "")
-        .toUpperCase()} />} />\n`;
-}
+let middle = `this.projects = ${JSON.stringify(projectList, null, 4)};`;
 
-routerTemplate = routerTemplate.replace(
-    /\/\/ start import[\s\S]*\/\/ end import/,
-    `// start import\n${importString}// end import`
-);
-routerTemplate = routerTemplate.replace(
-    /<Routes><\/Routes>/,
-    `<Routes>\n${routeString}
-    <Route path="*" element={<ProjectHome />} />
-    </Routes>`
-);
-
-fs.writeFileSync("src/pages/ProjectsRouter.jsx", routerTemplate);
-
-// make the projects page
-let projectsPage = fs.readFileSync(
-    "src/data/projectHomePageTemplate..jsx",
-    "utf8"
-);
-
-let softwareString = "";
-let hardwareString = "";
-let competitionString = "";
-
-for (let dat of Object.keys(projectsData)) {
-    let data = projectsData[dat];
-
-    let string = `${data.name.replace(/-/g, " ")}`;
-    string = string.replace(/\b\w/g, (l) => l.toUpperCase());
-
-    switch (data.category) {
-        case "software":
-            softwareString += `<div className="project ${data.name}"><a href="/projects/${data.name}"><h3>${string}</h3></a></div>\n`;
-            break;
-        case "hardware":
-            hardwareString += `<div className="project ${data.name}"><a href="/projects/${data.name}"><h3>${string}</h3></a></div>\n`;
-            break;
-        case "competition":
-            competitionString += `<div className="project ${data.name}"><a href="/projects/${data.name}"><h3>${string}</h3></a></div>\n`;
-            break;
-
-        default:
-            break;
-    }
-}
-
-projectsPage = projectsPage.replace(
-    /<div class="software-projects">*<\/div>/,
-    `<div className="software-projects">\n${softwareString}</div>`
-);
-projectsPage = projectsPage.replace(
-    /<div class="hardware-projects">*<\/div>/,
-    `<div className="hardware-projects">\n${hardwareString}</div>`
-);
-projectsPage = projectsPage.replace(
-    /<div class="competition-projects">*<\/div>/,
-    `<div className="competition-projects">\n${competitionString}</div>`
-);
-
-fs.writeFileSync("src/pages/ProjectsHome.jsx", projectsPage);
+file = start + "\n" + middle + "\n" + end;
+fs.writeFileSync(PROJECT_HOME_PATH, file);

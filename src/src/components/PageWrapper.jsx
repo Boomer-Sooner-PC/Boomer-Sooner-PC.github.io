@@ -40,17 +40,17 @@ export default class PageWrapper extends React.Component {
                     initial={{
                         opacity: 0,
                         translateY: 100,
-                        transition: { duration: 0.1 },
+                        transition: { duration: 0.25 },
                     }}
                     animate={{
                         opacity: 1,
                         translateY: 0,
-                        transition: { duration: 0.1 },
+                        transition: { duration: 0.25 },
                     }}
                     exit={{
                         opacity: 0,
-                        translateY: 100,
-                        transition: { duration: 0.1 },
+                        translateY: -100,
+                        transition: { duration: 0.25 },
                     }}>
                     {this.props.children}
                 </motion.div>

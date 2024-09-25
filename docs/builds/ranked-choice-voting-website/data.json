@@ -1,4 +1,5 @@
 {
     "github": "https://github.com/michael-manders/RCV-Polling-Website",
-    "category": "software"
+    "category": "software",
+    "description": "Live polling website using ranked choice voting"
 }

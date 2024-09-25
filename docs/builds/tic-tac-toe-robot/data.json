@@ -1,4 +1,5 @@
 {
     "github": "https://github.com/michael-manders/Tic-Tac-Toe",
-    "category": "hardware"
+    "category": "hardware",
+    "description": "TicTacToe robot that plays against you"
 }

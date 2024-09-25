@@ -1,4 +1,5 @@
 {
     "github": "https://github.com/michael-manders/time-tracking-renderer",
-    "category": "software"
+    "category": "software",
+    "description": "Renders and downloads an image of my time tracking chart"
 }

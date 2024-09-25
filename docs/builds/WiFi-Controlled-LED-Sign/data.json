@@ -1,4 +1,5 @@
 {
     "github": "https://github.com/michael-manders/WiFi-Controlled-LED-Sign",
-    "category": "hardware"
+    "category": "hardware",
+    "description": "LED sign controlled over WiFi using ESP3266"
 }

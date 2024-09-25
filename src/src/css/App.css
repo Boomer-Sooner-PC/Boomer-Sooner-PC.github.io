@@ -1,9 +1,9 @@
 :root {
     /* Define the color scheme */
-    --primary-color: #c7c9ca;
-    --secondary-color: #2c2b29;
+    --primary-color: #10100f;
+    --secondary-color: #e9eaeb;
     --accent: #dc82f8;
-    --text-primary: #1c1b1a;
+    --text-primary: rgb(233, 234, 235);
     --text-secondary: #aaaaaa;
 }
 
@@ -13,6 +13,7 @@ body {
     border: none;
     margin: 0;
     padding: 0;
+    /* font-weight:  !important; */
 }
 
 iframe {
@@ -38,5 +39,5 @@ iframe {
     height: calc(100vh - var(--border-padding) - var(--navbar-height));
     margin-left: calc(var(--border-padding) / 2);
     margin-top: calc(var(--border-padding) / 2 + var(--navbar-height));
-    border: 0.1vw solid var(--secondary-color);
+    border: 0.05vw solid var(--secondary-color);
 }
