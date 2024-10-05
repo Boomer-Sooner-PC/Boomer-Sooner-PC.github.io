@@ -180,6 +180,10 @@
     margin-left: 1vw;
 }
 
+#deploy-icon {
+    font-size: 300%;
+}
+
 .icon:hover {
     cursor: pointer;
     /* text-decoration: underline; */

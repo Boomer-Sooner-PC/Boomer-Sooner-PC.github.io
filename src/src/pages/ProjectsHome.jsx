@@ -64,7 +64,7 @@ this.projects = [
         "info": "<h2 id=\"about\">About</h2>\n<p>This is the project my team and I made for HackDFW2022. This was the first Hackathon I have ever competed at.\nSee <a href=\"https://devpost.com/software/common-carbon\">devpost</a> for more details</p>\n<h2 id=\"awards\">Awards</h2>\n<p>none :(</p>"
     },
     {
-        "title": "Correlations in AllRecipes Data",
+        "title": "Correlations in AllRecipes",
         "description": "Statistical analysis of ingredient correlations in AllRecipes database",
         "category": "software",
         "github": "https://github.com/michael-manders/correlation-in-allrecipes-database",
@@ -73,7 +73,7 @@ this.projects = [
             "projImg7.png",
             "projImg8.png"
         ],
-        "deployed": "https://michaelmanders.com/builds/Correlations-in-AllRecipes-Data/page.html",
+        "deployed": "https://michaelmanders.com/builds/Correlations-in-AllRecipes/page.html",
         "info": "<h2 id=\"explanation\">Explanation</h2>\n<p>This is a tool to visualize the correlations between ingredients in the AllRecipes database. I was inspired to make this by <a href=\"https://www.reddit.com/r/dataisbeautiful/comments/wuzidf/oc_correlation_between_spices_shared_in_recipes/\">this</a> Reddit post. It generates a correlation matrix between the selected ingredients and then displays it as a heatmap. The color of each cell represents the correlation factor between the two ingredients.</p>\n<h2 id=\"howitwasmade\">How it was made</h2>\n<p>I first took the dataset from this <a href=\"https://archive.org/details/allrecipes.com_recipes_12042020000000\">internet archive</a> that contains about 71,000 recipes scraped from AllRecipes. And wrote a python script that parsed the dataset and loaded it into a json file that contains only the relevant information (recipe name, ingredients, category, rating).\nThen I downloaded <a href=\"https://github.com/schollz/food-identicon/blob/master/ingredients.txt\">a text file</a> containing a list of bunch of ingredients. However that list contained a lot of junk items (like ingredients that contained measurements), so I make another python script that removed those items.\nThe recipes dataset's ingredients were written like \"1 cup of flour\", so I needed to just isolate the ingredient's name. I found a <a href=\"https://pypi.org/project/ingredient-parser-nlp/\">python library</a> that could do that, but it wasn't perfect. So after running the ingredients through that, the python script looks through the list of ingredients, and the largest item from that list that is a substring of the ingredient, becomes the ingredient. After running this I had a list of recipes, and their ingredients.\nTo calculate the correlation matrix, I wrote a javascript function (so it could be hosted on a static website) that takes in a list of ingredients, and a category (if you want to only look at a certain category of recipes), and then calculates the correlation matrix.\nThen I wrote a javascript function that takes in the correlation matrix, and generates an image that represents it.\nFinally I wrote this webpage to display the image, and allow the user to select the ingredients they want to analyze.</p>\n<h2 id=\"limitations\">Limitations</h2>\n<p>The dataset is not perfect, and there are some issues I could see with it. The primary issue is that the data is fairly western focused, so the correlations will reflect that.</p>"
     },
     {
